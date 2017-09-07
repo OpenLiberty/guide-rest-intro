@@ -193,3 +193,5 @@ To see whether the tests detect a failure, add an assertion that you know fails,
 == Congratulations! You're done!
 
 You developed a REST service by using JAX-RS, JSON-P, and Liberty.
+
+include::{common-includes}/finish.adoc[]
