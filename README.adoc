@@ -11,7 +11,7 @@
 :page-duration: 15 minutes
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :page-tags: ['REST', 'Getting Started']
-:page-permalink: /guides/rest-service
+:page-permalink: /guides/{projectid}
 :common-includes: ../guides-common/
 = Creating a RESTful web service
 
