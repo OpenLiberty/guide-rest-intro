@@ -5,6 +5,7 @@
 //
 // Contributors:
 //     IBM Corporation
+//
 :projectid: rest-intro
 :page-layout: guide
 :page-duration: 15 minutes
