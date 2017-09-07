@@ -5,7 +5,7 @@
 //
 // Contributors:
 //     IBM Corporation
-:projectid: rest
+:projectid: rest-intro
 :page-layout: guide
 :page-duration: 15 minutes
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
