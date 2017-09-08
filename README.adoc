@@ -48,7 +48,7 @@ JAX-RS has two key concepts for creating REST APIs. The most obvious is the reso
 Create the JAX-RS application class in the `src/main/java/io/openliberty/guides/rest/SystemApplication.java` file.
 [source,java]
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;*]
+include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
 ----
 The `SystemApplication` class extends the `Application` class which, by default, associates all JAX-RS resource classes in the WAR file with this JAX-RS application. The `@ApplicationPath` annotation has a value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
@@ -59,7 +59,7 @@ In JAX-RS, a single class should represent a single resource, or a group of reso
 Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file.
 [source,java]
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;*]
+include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
 ----
 
 This resource class has quite a bit of code in it, so let's break it down into manageable chunks.
@@ -102,7 +102,7 @@ Create the test class in the `src/test/java/it/io/openliberty/guides/rest/Endpoi
 
 [source,java]
 ----
-include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=**;*]
+include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=**;!comment]
 ----
 
 This test class has more lines of code than the resource implementation. This situation is common. The test method is indicated with the `@Test` annotation.
