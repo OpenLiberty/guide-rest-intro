@@ -50,11 +50,11 @@ Create the JAX-RS application class in the `src/main/java/io/openliberty/guides/
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;*]
 ----
-The `SystemApplication` class extends the `Application` class which, by default, associates all JAX-RS resource classes in the WAR file with this JAX-RS application. The `@ApplicationPath` annotation has a value that indicates the path within the WAR that the JAX-RS application sound be accepts requests from.
+The `SystemApplication` class extends the `Application` class which, by default, associates all JAX-RS resource classes in the WAR file with this JAX-RS application. The `@ApplicationPath` annotation has a value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
 == Creating the JAX-RS resource
 
-In JAX-RS, a single class should represent a single resource, or a group of resources of the same type. A resource might be a system property, or a set of system properties. It is easy to have a single class handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
+In JAX-RS, a single class should represent a single resource, or a group of resources of the same type. In this application a resource might be a system property, or a set of system properties. It is easy to have a single class handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
 
 Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file.
 [source,java]
@@ -77,7 +77,7 @@ JAX-RS maps the HTTP methods on the URL to the methods on the class. The method 
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=getProperties]
 ----
 
-The `@GET` annotation on the method indicates that this method it to be called for the HTTP `GET` method. The `@Produces` annotation indicates the format of the content that will be returned, the value of the `@Produces` annotation will be specified in the HTTP `Content-Type` response header. For this application a JSON structure is to be returned. The desired `Content-Type` for a JSON response is `application/json`, but using `MediaType.APPLICATION_JSON` instead of the `String` literal is better because in the event of a spelling error a compile failure will occur.
+The `@GET` annotation on the method indicates that this method it to be called for the HTTP `GET` method. The `@Produces` annotation indicates the format of the content that will be returned, the value of the `@Produces` annotation will be specified in the HTTP `Content-Type` response header. For this application a JSON structure is to be returned. The desired `Content-Type` for a JSON response is `application/json`, using `MediaType.APPLICATION_JSON` instead of the `String` literal is better because in the event of a spelling error a compile failure will occur.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.0 specification mandates JSON-Processing (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which allows the `Properties` object to be returned instead. Although this conversion would allow for a simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard. This gap in the specification will be fixed in Java EE 8 with the inclusion of JSON-B.
 
@@ -157,7 +157,7 @@ include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[ta
 
 To get the service running the Liberty server needs to be correctly configured.
 
-Create the `finish/src/main/liberty/config/server.xml` file.
+Create the `src/main/liberty/config/server.xml` file.
 [source,xml]
 ----
 include::finish/src/main/liberty/config/server.xml[]
