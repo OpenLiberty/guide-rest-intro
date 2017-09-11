@@ -8,7 +8,7 @@
 //
 :projectid: rest-intro
 :page-layout: guide
-:page-duration: 15 minutes
+:page-duration: 30 minutes
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :page-tags: ['REST', 'Getting Started']
 :page-permalink: /guides/{projectid}
