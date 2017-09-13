@@ -94,7 +94,7 @@ include::{common-includes}/mvnbuild.adoc[]
 
 == Testing the service
 
-You can test this service by pointing a web browser at the `http://localhost:9080/LibertyProject/System/properties' URL. Automated tests are a much better approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client API provide a very simple environment to test the application.
+You could test this service manually by starting a server and pointing a web browser at the `\http://localhost:9080/LibertyProject/System/properties` URL. Automated tests are a much better approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client API provide a very simple environment to test the application.
 
 You can write tests for the individual units of code outside of a running application server, or they can be written to call the application server directly. In this example you will create a test that does the latter.
 
