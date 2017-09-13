@@ -94,7 +94,7 @@ include::{common-includes}/mvnbuild.adoc[]
 
 == Testing the service
 
-You can test this service by pointing a web browser at the `http://localhost:9080/LibertyProject/System/properties' URL. Automated tests are a much better approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client API provide a very simple environment to test the application.
+You can test this service by pointing a web browser at the `\http://localhost:9080/LibertyProject/System/properties` URL. Automated tests are a much better approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client API provide a very simple environment to test the application.
 
 You can write tests for the individual units of code outside of a running application server, or they can be written to call the application server directly. In this example you will create a test that does the latter.
 
@@ -157,7 +157,7 @@ include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[ta
 
 To get the service running the Liberty server needs to be correctly configured.
 
-Create the `src/main/liberty/config/server.xml` file.
+Update the `src/main/liberty/config/server.xml` file:
 [source,xml]
 ----
 include::finish/src/main/liberty/config/server.xml[]
@@ -168,7 +168,7 @@ The configuration does the following:
 . Configures the server to pick up the HTTP port numbers from variables which are then specified in the Maven `pom.xml` file. This is specified in the `httpEndpoint` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven `pom.xml` file. This is specified in the `webApplication` element.
 
-The variables being used in the `server.xml` file are provided by the following Maven `pom.xml` snippet:
+The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section of the Maven `pom.xml`:
 
 [source,xml,indent=0]
 ----
@@ -189,7 +189,7 @@ Results :
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 ----
 
-To see whether the tests detect a failure, add an assertion that you know fails, or change the existing assertion to a constant value that doesn't match the os.name system property.
+To see whether the tests detect a failure, add an assertion that you know fails, or change the existing assertion to a constant value that doesn't match the `os.name` system property.
 
 == Congratulations! You're done!
 
