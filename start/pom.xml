@@ -110,7 +110,7 @@
                     <assemblyArtifact>
                          <groupId>io.openliberty</groupId>
                          <artifactId>openliberty-runtime</artifactId>
-                         <version>0.0.1-preview</version>
+                         <version>17.0.0.3-RC</version>
                         <type>zip</type>
                     </assemblyArtifact>
                     <configFile>src/main/liberty/config/server.xml</configFile>
