@@ -6,14 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <repositories>
-        <repository>
-            <id>openliberty-repo</id>
-            <name>openliberty-repo</name>
-            <url>http://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/wasliberty-open-liberty/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -110,7 +102,7 @@
                     <assemblyArtifact>
                          <groupId>io.openliberty</groupId>
                          <artifactId>openliberty-runtime</artifactId>
-                         <version>17.0.0.3-RC</version>
+                         <version>17.0.0.3</version>
                         <type>zip</type>
                     </assemblyArtifact>
                     <configFile>src/main/liberty/config/server.xml</configFile>
