@@ -12,7 +12,7 @@
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :page-tags: ['REST', 'Getting Started']
 :page-permalink: /guides/{projectid}
-:common-includes: ../guides-common/
+:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
 
 Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
@@ -27,7 +27,7 @@ http://localhost:9080/LibertyProject/System/properties
 
 The service responds to a `GET` request with a JSON representation of the system properties, where each property is a field in a JSON object like this:
 
-[source,json]
+[source,json,role="no_copy"]
 ----
 {
   "os.name":"Mac",
@@ -177,6 +177,7 @@ include::finish/pom.xml[lines=111..115]
 
 To rebuild, run the tests, and see that the test passes, run the command: `mvn install`. The Maven build takes a little longer than before the test existed, but expect to see the following information in the output:
 
+[source,role="no_copy"]
 ----
 -------------------------------------------------------
  T E S T S
