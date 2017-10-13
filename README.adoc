@@ -177,7 +177,7 @@ include::finish/pom.xml[lines=111..115]
 
 To rebuild, run the tests, and see that the test passes, run the command: `mvn install`. The Maven build takes a little longer than before the test existed, but expect to see the following information in the output:
 
-[source, role="no_copy"]
+[source,role="no_copy"]
 ----
 -------------------------------------------------------
  T E S T S
