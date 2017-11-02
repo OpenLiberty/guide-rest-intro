@@ -63,7 +63,7 @@ Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/res
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
 ----
 
-This resource class has quite a bit of code in it, so break it down into manageable chunks.
+This resource class has quite a bit of code in it, so let's break it down into manageable chunks.
 
 The `@Path` annotation on the class indicates that this resource responds to the `properties` path in the JAX-RS application. The `@ApplicationPath` annotation in the application class together with the `@Path` annotation in this class indicates that the resource is available at the `System/properties` path.
 [source,java,role="no_copy"]
