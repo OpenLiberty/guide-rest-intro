@@ -21,7 +21,7 @@ Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 
 You will learn how to build and test a simple REST service with JAX-RS and JSON-P that will expose the JVM's system properties. The REST service will respond to GET requests made to the URL:
 
-[source,json,role="no_copy"]
+[source,role="no_copy"]
 ----
 http://localhost:9080/LibertyProject/System/properties
 ----
