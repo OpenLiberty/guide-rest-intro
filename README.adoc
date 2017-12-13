@@ -12,7 +12,7 @@
 :page-releasedate: 2017-09-19
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :page-tags: ['REST', 'Getting Started']
-:page-related-guides: ['rest-client-java']
+:page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
