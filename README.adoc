@@ -128,6 +128,32 @@ for every entry in the stream. The key and value for the `JsonObject` will be ob
 the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
 . Returns the `JsonObject` by calling the `build` method on the `JsonObjectBuilder`.
 
+== Configuring the server
+
+To get the service running, the Liberty server needs to be correctly configured.
+
+Replace the placeholder text with the following XML code to update the `src/main/liberty/config/server.xml` file:
+
+[source,xml]
+----
+include::finish/src/main/liberty/config/server.xml[]
+----
+The configuration does the following actions:
+
+. Configures the server to support both JAX-RS 2.0 and JSON-P 1.0. This is specified in the `featureManager` element.
+. Configures the server to pick up the HTTP port numbers from variables, which are then specified in
+the Maven `pom.xml` file. This is specified in the `httpEndpoint` element. Variables use the syntax `${variableName}`.
+. Configures the server to run the produced Web application on a context root specified in the Maven
+`pom.xml` file. This is specified in the `webApplication` element.
+
+The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
+of the Maven `pom.xml`:
+
+[source,xml,indent=0, role="no_copy"]
+----
+include::finish/pom.xml[lines=111..115]
+----
+
 include::{common-includes}/mvnbuild.adoc[]
 
 == Testing the service
@@ -218,30 +244,6 @@ for both JVMs is the same. You could write additional assertions to check for mo
 [source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=body]
-----
-
-To get the service running, the Liberty server needs to be correctly configured.
-
-Replace the placeholder text with the following XML code to update the `src/main/liberty/config/server.xml` file:
-
-[source,xml]
-----
-include::finish/src/main/liberty/config/server.xml[]
-----
-The configuration does the following actions:
-
-. Configures the server to support both JAX-RS 2.0 and JSON-P 1.0. This is specified in the `featureManager` element.
-. Configures the server to pick up the HTTP port numbers from variables, which are then specified in
-the Maven `pom.xml` file. This is specified in the `httpEndpoint` element. Variables use the syntax `${variableName}`.
-. Configures the server to run the produced Web application on a context root specified in the Maven
-`pom.xml` file. This is specified in the `webApplication` element.
-
-The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
-of the Maven `pom.xml`:
-
-[source,xml,indent=0, role="no_copy"]
-----
-include::finish/pom.xml[lines=111..115]
 ----
 
 To rebuild, run the tests, and see that the test passes, run the command: `mvn install`. The Maven
