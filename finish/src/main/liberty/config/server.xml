@@ -1,4 +1,4 @@
-<server description="Sample Liberty server">
+<server description="Intro REST Guide Liberty server">
 
   <featureManager>
       <feature>jaxrs-2.0</feature>
