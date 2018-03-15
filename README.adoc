@@ -100,12 +100,11 @@ to the `System/properties` path results in the system properties being returned:
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=getProperties]
 ----
 
-The `@GET` annotation on the method indicates that this method it to be called for the HTTP `GET`
+The `@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
 method. The `@Produces` annotation indicates the format of the content that will be returned, the
 value of the `@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
-response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` code. Literal
-code is better because in the event of a spelling error, a compile failure occurs.
+response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.0 specification mandates JSON-Processing
 (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
@@ -132,8 +131,7 @@ the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
 
 To get the service running, the Liberty server needs to be correctly configured.
 
-Replace the placeholder text with the following XML code to update the `src/main/liberty/config/server.xml` file:
-
+Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
 [source,xml]
 ----
 include::finish/src/main/liberty/config/server.xml[]
