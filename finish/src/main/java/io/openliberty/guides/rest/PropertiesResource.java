@@ -12,20 +12,13 @@
  // end::comment[]
 package io.openliberty.guides.rest;
 
-import java.util.Properties;
-import java.util.Map;
-
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.GET;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-
+import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.json.JsonArray;
-import javax.json.Json;
-import javax.json.JsonNumber;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 // tag::class[]
 @Path("properties")
