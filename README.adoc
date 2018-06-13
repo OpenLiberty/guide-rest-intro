@@ -11,9 +11,11 @@
 :page-duration: 30 minutes
 :page-releasedate: 2017-09-19
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+:page-categories: MicroProfile
 :page-tags: ['REST', 'MicroProfile', 'microservices']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
+:repo-description: Visit the https://openliberty.io/guides/{projectid}.html[website] for the rendered version of the guide.
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
 
@@ -27,7 +29,7 @@ Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 You will learn how to build and test a simple REST service with JAX-RS and JSON-P that will expose
 the JVM's system properties. The REST service will respond to GET requests made to the URL:
 
-[source,role="command"]
+[source,role="code_command"]
 ----
 http://localhost:9080/LibertyProject/System/properties
 ----
@@ -276,6 +278,9 @@ assertion to a constant value that doesn't match the `os.name` system property.
 
 You developed a REST service by using JAX-RS, JSON-P, and Liberty.
 
-include::{common-includes}/finish.adoc[]
+== Related Links
 
+https://github.com/microprofile[See MicroProfile Config specs (GitHub)]
+
+https://openliberty.io/docs/ref/microprofile[Another link to MicroProfile specs (openliberty.io)]
 
