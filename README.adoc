@@ -63,7 +63,10 @@ modelled as a class. The second is a JAX-RS application, which groups all expose
 common path. You can think of the JAX-RS application as a wrapper for all your resources. Having a
 single JAX-RS application is common, although multiple are possible.
 
+[role="code_command"]
+----
 Create the JAX-RS application class in the `src/main/java/io/openliberty/guides/rest/SystemApplication.java` file:
+----
 
 SystemApplication.java,lines=7-9
 [source,java,linenums,role='code_column']
@@ -83,7 +86,10 @@ In this application, a resource might be a system property, or a set of system p
 to have a single class handle multiple different resources, but keeping a clean separation between types
 of resources helps with maintainability in the long run.
 
+[role="code_command"]
+----
 Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file:
+----
 
 PropertiesResource.java,lines=19-34
 [source,java,linenums,role='code_column']
@@ -179,7 +185,10 @@ You can write tests for the individual units of code outside of a running applic
 can be written to call the application server directly. In this example, you will create a test that
 does the latter.
 
+[role="code_command"]
+----
 Create the test class in the `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java` file:
+----
 
 EndpointTest.java,lines=1-20
 [source,java,role="code_column"]
