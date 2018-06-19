@@ -14,20 +14,14 @@ package it.io.openliberty.guides.rest;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import javax.json.JsonObject;
-import javax.json.JsonArray;
-import javax.json.Json;
-
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.client.Entity;
 
 import org.apache.cxf.jaxrs.provider.jsrjsonp.JsrJsonpProvider;
+import org.junit.Test;
 
 public class EndpointTest {
 
