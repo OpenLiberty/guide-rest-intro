@@ -17,6 +17,9 @@
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
 
+[.hidden]
+NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
+
 Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 
 == What you'll learn
