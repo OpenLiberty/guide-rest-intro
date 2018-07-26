@@ -113,7 +113,7 @@ JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.0 specification m
 (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
 allows the `Properties` object to be returned instead. Although this conversion would allow for a
 simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard. This
-gap in the specification will be fixed in Java EE 8 with the inclusion of JSON-B.
+gap in the specification is fixed in Java EE 8 with the inclusion of JSON-B.
 
 The method body does the following actions:
 
