@@ -152,7 +152,7 @@ of the Maven `pom.xml`:
 
 [source,xml,indent=0, role="no_copy"]
 ----
-include::finish/pom.xml[lines=111..115]
+include::finish/pom.xml[tags=bootstrapProperties]
 ----
 
 include::{common-includes}/mvnbuild.adoc[]
@@ -185,7 +185,7 @@ file. Open the `pom.xml` file to see how the application information is provided
 
 [source,xml,indent=0,role="no_copy"]
 ----
-include::finish/pom.xml[lines=15..17]
+include::finish/pom.xml[tags=applicationInfo]
 ----
 
 These Maven properties are then passed to the Java test program as a series of system properties in
@@ -193,7 +193,7 @@ the `pom.xml` file:
 
 [source,xml,indent=0,role="no_copy"]
 ----
-include::finish/pom.xml[lines=179..182]
+include::finish/pom.xml[tags=systemProperties]
 ----
 
 Getting the values to create a representation of the URL is simple. The test class uses the properties
