@@ -63,12 +63,13 @@ modelled as a class. The second is a JAX-RS application, which groups all expose
 common path. You can think of the JAX-RS application as a wrapper for all your resources. Having a
 single JAX-RS application is common, although multiple are possible.
 
-[role="code_command"]
+highlight_lines=7-9
+[role="code_command hotspot"]
 ----
 Create the JAX-RS application class in the `src/main/java/io/openliberty/guides/rest/SystemApplication.java` file:
 ----
 
-SystemApplication.java,lines=7-9
+SystemApplication.java
 [source,java,linenums,role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
@@ -86,12 +87,13 @@ In this application, a resource might be a system property, or a set of system p
 to have a single class handle multiple different resources, but keeping a clean separation between types
 of resources helps with maintainability in the long run.
 
-[role="code_command"]
+highlight_lines=19-34
+[role="code_command hotspot"]
 ----
 Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file:
 ----
 
-PropertiesResource.java,lines=19-34
+PropertiesResource.java
 [source,java,linenums,role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
@@ -148,9 +150,13 @@ the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
 
 To get the service running, the Liberty server needs to be correctly configured.
 
+highlight_lines=1-12
+[role="code_command hotspot"]
+----
 Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
+----
 
-Server.xml,lines=1-12
+Server.xml
 [source,xml,linenums,role="code_column"]
 ----
 include::finish/src/main/liberty/config/server.xml[]
@@ -185,13 +191,14 @@ You can write tests for the individual units of code outside of a running applic
 can be written to call the application server directly. In this example, you will create a test that
 does the latter.
 
-[role="code_command"]
+highlight_lines=20-43
+[role="code_command hotspot"]
 ----
 Create the test class in the `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java` file:
 ----
 
-EndpointTest.java,lines=1-20
-[source,java,role="code_column"]
+EndpointTest.java
+[source,java,linenums,role="code_column"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=**;!comment]
 ----
@@ -288,7 +295,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
 
-include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[]
+include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[subs="attributes"]
 
 == Great work! You're done!
 
