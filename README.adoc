@@ -87,7 +87,7 @@ In this application, a resource might be a system property, or a set of system p
 to have a single class handle multiple different resources, but keeping a clean separation between types
 of resources helps with maintainability in the long run.
 
-highlight_lines=19-34
+highlight_lines=12-34
 [role="code_command hotspot"]
 ----
 Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file:
@@ -191,7 +191,7 @@ You can write tests for the individual units of code outside of a running applic
 can be written to call the application server directly. In this example, you will create a test that
 does the latter.
 
-highlight_lines=20-43
+highlight_lines=17-43
 [role="code_command hotspot"]
 ----
 Create the test class in the `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java` file:
