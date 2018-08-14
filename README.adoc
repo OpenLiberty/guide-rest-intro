@@ -303,9 +303,9 @@ You developed a REST service by using JAX-RS, JSON-P, and Liberty.
 
 == Related Links
 
-Dive into the MicroProfile config.
+Learn more about MicroProfile.
 
-https://github.com/microprofile[See MicroProfile Config specs (GitHub)]
+https://microprofile.io/[See the MicroProfile specs]
 
-https://openliberty.io/docs/ref/microprofile[Another link to MicroProfile specs (openliberty.io)]
+https://openliberty.io/docs/ref/microprofile[View the MicroProfile API]
 
