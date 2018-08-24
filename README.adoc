@@ -10,6 +10,9 @@
 :page-layout: guide
 :page-duration: 30 minutes
 :page-releasedate: 2017-09-19
+:page-guide-catagory: microprofile
+:page-essential: true
+:page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :page-tags: ['REST', 'MicroProfile', 'microservices']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
