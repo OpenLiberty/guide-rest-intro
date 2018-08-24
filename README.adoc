@@ -10,7 +10,7 @@
 :page-layout: guide
 :page-duration: 30 minutes
 :page-releasedate: 2017-09-19
-:page-guide-catagory: microprofile
+:page-guide-category: microprofile
 :page-essential: true
 :page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
