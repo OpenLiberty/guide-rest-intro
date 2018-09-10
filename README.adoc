@@ -112,7 +112,7 @@ value of the `@Produces` annotation will be specified in the HTTP `Content-Type`
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
-JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.0 specification mandates JSON-Processing
+JAX-RS supports a number of ways to marshal JSON. The JAX-RS specification mandates JSON-Processing
 (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
 allows the `Properties` object to be returned instead. Although this conversion would allow for a
 simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard. This
@@ -144,7 +144,7 @@ include::finish/src/main/liberty/config/server.xml[]
 ----
 The configuration does the following actions:
 
-. Configures the server to support both JAX-RS 2.0 and JSON-P 1.0. This is specified in the `featureManager` element.
+. Configures the server to support both JAX-RS and JSON-P. This is specified in the `featureManager` element.
 . Configures the server to pick up the HTTP port numbers from variables, which are then specified in
 the Maven `pom.xml` file. This is specified in the `httpEndpoint` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven
