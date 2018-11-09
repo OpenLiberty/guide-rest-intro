@@ -29,7 +29,7 @@ Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 You will learn how to build and test a simple REST service with JAX-RS and JSON-P that will expose
 the JVM's system properties. The REST service will respond to GET requests made to the URL:
 
-[source]
+[source,role="no_copy"]
 ----
 http://localhost:9080/LibertyProject/System/properties
 ----
@@ -37,7 +37,7 @@ http://localhost:9080/LibertyProject/System/properties
 The service responds to a `GET` request with a JSON representation of the system properties, where
 each property is a field in a JSON object like this:
 
-[source,json]
+[source,json,role="no_copy"]
 ----
 {
   "os.name":"Mac",
@@ -103,7 +103,7 @@ The `@Path` annotation on the class indicates that this resource responds to the
 in the JAX-RS application. The `@ApplicationPath` annotation in the application class together with
 the `@Path` annotation in this class indicates that the resource is available at the `System/properties`
 path.
-[source,java]
+[source,java,role="no_copy"]
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=class]
 ----
@@ -112,7 +112,7 @@ JAX-RS maps the HTTP methods on the URL to the methods on the class. The method 
 by the annotations specified on the methods. In the application you are building, an HTTP `GET` request
 to the `System/properties` path results in the system properties being returned:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=getProperties]
 ----
@@ -169,7 +169,7 @@ the Maven `pom.xml` file. This is specified in the `httpEndpoint` element. Varia
 The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
 of the Maven `pom.xml`:
 
-[source,xml,indent=0]
+[source,xml,indent=0,role="no_copy"]
 ----
 include::finish/pom.xml[tag=bootstrap]
 ----
@@ -207,7 +207,7 @@ port and the application context root are key, and are dictated by the server co
 information can be hardcoded, it is better to specify it in a single place like the Maven `pom.xml`
 file. Open the `pom.xml` file to see how the application information is provided in the file:
 
-[source,xml,indent=0]
+[source,xml,indent=0,role="no_copy"]
 ----
 include::finish/pom.xml[tag=appdetails]
 ----
@@ -215,7 +215,7 @@ include::finish/pom.xml[tag=appdetails]
 These Maven properties are then passed to the Java test program as a series of system properties in
 the `pom.xml` file:
 
-[source,xml,indent=0]
+[source,xml,indent=0,role="no_copy"]
 ----
 include::finish/pom.xml[tag=testsysprops]
 ----
@@ -223,7 +223,7 @@ include::finish/pom.xml[tag=testsysprops]
 Getting the values to create a representation of the URL is simple. The test class uses the properties
 to get the application details:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=systemProperties]
 ----
@@ -233,7 +233,7 @@ representation. To get the JAX-RS client to do the conversion, the client needs 
 class registered with it by calling the `register` method and providing the `Class` object for the
 `JsrJsonpProvider` class:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=clientSetup]
 ----
@@ -244,7 +244,7 @@ on `WebTarget` and then the `get` method on the returned object need to be calle
 call is a synchronous call that blocks until a response is received. This call returns a `Response`
 object, which can be interrogated to determine whether the request was successful:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=request]
 ----
@@ -256,7 +256,7 @@ important to associate the expected response code with the second parameter and 
 with the third parameter. Otherwise, the error messages from JUnit will claim that the actual response
 is the expected one, which can cause confusion:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=response]
 ----
@@ -266,7 +266,7 @@ are running on the same machine, it is reasonable to expect that the system prop
 and remote JVM would be the same. In this case, an assertion is made that the `os.name` system property
 for both JVMs is the same. You could write additional assertions to check for more values:
 
-[source,java,indent=0]
+[source,java,indent=0,role="no_copy"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=body]
 ----
@@ -275,7 +275,7 @@ To rebuild, run the tests, and see that the test passes, run the command: `mvn i
 build takes a little longer than before the test existed, but expect to see the following information
 in the output:
 
-[source]
+[source,role="no_copy"]
 ----
 -------------------------------------------------------
  T E S T S
