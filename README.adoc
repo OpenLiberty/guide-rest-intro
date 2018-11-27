@@ -65,7 +65,8 @@ single JAX-RS application is common, although multiple are possible.
 
 [role="code_command hotspot=1-9",subs="quotes"]
 ----
-Create the JAX-RS application class in the `src/main/java/io/openliberty/guides/rest/SystemApplication.java` file:
+Create the JAX-RS application class file.
+`src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
 SystemApplication.java
@@ -88,7 +89,8 @@ of resources helps with maintainability in the long run.
 
 [role="code_command hotspot=1-34"]
 ----
-Create the JAX-RS resource class in the `src/main/java/io/openliberty/guides/rest/PropertiesResource.java` file:
+Create the JAX-RS resource class file.
+`src/main/java/io/openliberty/guides/rest/PropertiesResource.java`
 ----
 
 PropertiesResource.java
@@ -141,7 +143,8 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot=1-12"]
 ----
-Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
+Edit the file to update the placeholder text.
+`src/main/liberty/config/server.xml`
 ----
 
 Server.xml
@@ -181,7 +184,8 @@ does the latter.
 
 [role="code_command hotspot=1-43"]
 ----
-Create the test class in the `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java` file:
+Create the test class file.
+`src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
 ----
 
 EndpointTest.java
