@@ -87,7 +87,7 @@ In this application, a resource might be a system property, or a set of system p
 to have a single class handle multiple different resources, but keeping a clean separation between types
 of resources helps with maintainability in the long run.
 
-[role="code_command hotspot=1-34"]
+[role="code_command hotspot=1-34", subs="quotes"]
 ----
 Create the JAX-RS resource class file.
 `src/main/java/io/openliberty/guides/rest/PropertiesResource.java`
@@ -129,7 +129,7 @@ to populate a `JsonObject` with values.
 . Calls the [hotspot=20]`getProperties` method on the `System` class to get a `Properties` object that contains
 all the system properties.
 . Calls the [hotspot=21]`entrySet` method on the `Properties` object to get a `Set` of all the entries.
-. Convert the [hotspot=22]`Set` to a `Stream` (new in Java SE 8) by calling the `stream` method. Streams make
+. Convert the `Set` to a [hotspot=22]`Stream` (new in Java SE 8) by calling the `stream` method. Streams make
 working through all the entries in a list very simple.
 . Calls the [hotspot=23-24]`forEach` method on the `Stream` passing in a function that will be invoked for each
 entry in the `Stream`. The function passed in will call the `add` method on the `JsonObjectBuilder`
@@ -141,7 +141,7 @@ the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
 
 To get the service running, the Liberty server needs to be correctly configured.
 
-[role="code_command hotspot=1-12"]
+[role="code_command hotspot=1-12", subs="quotes"]
 ----
 Edit the file to update the placeholder text.
 `src/main/liberty/config/server.xml`
@@ -182,7 +182,7 @@ You can write tests for the individual units of code outside of a running applic
 can be written to call the application server directly. In this example, you will create a test that
 does the latter.
 
-[role="code_command hotspot=1-43"]
+[role="code_command hotspot=1-43", subs="quotes"]
 ----
 Create the test class file.
 `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
