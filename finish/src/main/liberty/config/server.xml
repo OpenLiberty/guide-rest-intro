@@ -1,8 +1,8 @@
 <server description="Intro REST Guide Liberty server">
 
   <featureManager>
-      <feature>jaxrs-2.0</feature>
-      <feature>jsonp-1.0</feature>
+      <feature>jaxrs-2.1</feature>
+      <feature>jsonp-1.1</feature>
   </featureManager>
 
   <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"

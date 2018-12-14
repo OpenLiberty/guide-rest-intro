@@ -10,9 +10,11 @@
 :page-layout: guide-multipane
 :page-duration: 30 minutes
 :page-releasedate: 2017-09-19
+:page-guide-category: microprofile
+:page-essential: true
+:page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
-:page-categories: MicroProfile
-:page-tags: ['REST', 'MicroProfile', 'microservices']
+:page-tags: ['REST', 'MicroProfile', 'microservices', 'Java EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :repo-description: Visit the https://openliberty.io/guides/{projectid}.html[website] for the rendered version of the guide.
@@ -26,8 +28,8 @@ Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 
 == What you'll learn
 
-You will learn how to build and test a simple REST service with JAX-RS and JSON-P that will expose
-the JVM's system properties. The REST service will respond to GET requests made to the URL:
+You will learn how to build and test a simple REST service with JAX-RS and JSON-P, which will expose
+the JVM's system properties. The REST service will respond to `GET` requests made to the URL:
 
 [source,role="no_copy"]
 ----
@@ -45,9 +47,9 @@ each property is a field in a JSON object like this:
 }
 ----
 
-When you create a new REST application the design of the API is important. The JAX-RS APIs could be
-used to create JSON-RPC, or XML-RPC APIs, but wouldn't be a RESTful service. A good RESTful service
-is designed around the resources that are exposed, and how to create, read, update, and delete the
+When you create a new REST application, the design of the API is important. The JAX-RS APIs could be
+used to create JSON-RPC, or XML-RPC APIs, but it wouldn't be a RESTful service. A good RESTful service
+is designed around the resources that are exposed, and on how to create, read, update, and delete the
 resources.
 
 The service responds to `GET` requests to the `/System/properties` path. The `GET` request should
@@ -58,9 +60,9 @@ include::{common-includes}/gitclone.adoc[]
 
 == Creating a JAX-RS application
 
-JAX-RS has two key concepts for creating REST APIs. The most obvious is the resource itself, which is
+JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
-common path. You can think of the JAX-RS application as a wrapper for all your resources. Having a
+common path. You can think of the JAX-RS application as a wrapper for all of your resources. Having a
 single JAX-RS application is common, although multiple are possible.
 
 [role="code_command hotspot=1-9",subs="quotes"]
@@ -71,14 +73,15 @@ Create the JAX-RS application class file.
 
 SystemApplication.java
 [source,java,linenums,role='code_column']
-----
-include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
-----
 
 The [hotspot=1-9]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
 resource classes in the WAR file with this JAX-RS application, making them available under the common
 path specified in the `SystemApplication` class. The [hotspot=6-7]`@ApplicationPath` annotation has a
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
+
+----
+include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
+----
 
 == Creating the JAX-RS resource
 
@@ -116,7 +119,7 @@ value of the `@Produces` annotation will be specified in the HTTP `Content-Type`
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
-JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.0 specification mandates JSON-Processing
+JAX-RS supports a number of ways to marshal JSON. The JAX-RS specification mandates JSON-Processing
 (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
 allows the `Properties` object to be returned instead. Although this conversion would allow for a
 simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard. This
