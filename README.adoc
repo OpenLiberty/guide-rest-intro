@@ -65,15 +65,15 @@ modelled as a class. The second is a JAX-RS application, which groups all expose
 common path. You can think of the JAX-RS application as a wrapper for all of your resources. Having a
 single JAX-RS application is common, although multiple are possible.
 
-[role="code_command hotspot=1-9",subs="quotes"]
+[role="code_command hotspot=7-9",subs="quotes"]
 ----
-Create the JAX-RS application class file.
+Create the `SystemApplication` class.
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
-The [hotspot=1-9]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
+The [hotspot=7-9]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
 resource classes in the WAR file with this JAX-RS application, making them available under the common
-path specified in the `SystemApplication` class. The [hotspot=6-7]`@ApplicationPath` annotation has a
+path specified in the [hotspot=7-9]`SystemApplication` class. The [hotspot=6]`@ApplicationPath` annotation has a
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
 SystemApplication.java
@@ -91,14 +91,8 @@ of resources helps with maintainability in the long run.
 
 [role="code_command hotspot=1-34", subs="quotes"]
 ----
-Create the JAX-RS resource class file.
+Create the PropertiesResource class.
 `src/main/java/io/openliberty/guides/rest/PropertiesResource.java`
-----
-
-PropertiesResource.java
-[source,java,linenums,role='code_column']
-----
-include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
 ----
 
 This resource class has quite a bit of code in it, so let's break it down into manageable chunks.
@@ -138,6 +132,12 @@ entry in the `Stream`. The function passed in will call the `add` method on the 
 for every entry in the stream. The key and value for the `JsonObject` will be obtained by calling
 the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
 . Returns the [hotspot=26]`JsonObject` by calling the `build` method on the `JsonObjectBuilder`.
+
+PropertiesResource.java
+[source,java,linenums,role='code_column']
+----
+include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
+----
 
 == Configuring the server
 
