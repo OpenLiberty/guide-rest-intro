@@ -71,14 +71,13 @@ Create the JAX-RS application class file.
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
-SystemApplication.java
-[source,java,linenums,role='code_column']
-
 The [hotspot=1-9]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
 resource classes in the WAR file with this JAX-RS application, making them available under the common
 path specified in the `SystemApplication` class. The [hotspot=6-7]`@ApplicationPath` annotation has a
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
+SystemApplication.java
+[source,java,linenums,role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
 ----
