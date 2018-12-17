@@ -155,21 +155,22 @@ Server.xml
 include::finish/src/main/liberty/config/server.xml[]
 ----
 
+The configuration does the following actions:
+
+. Configures the server to support both JAX-RS 2.0 and JSON-P 1.0. This is specified in the [hotspot=3-6 file=0]`featureManager` element.
+
 pom.xml
 [source,xml,role="code_column"]
 ----
 include::finish/pom.xml[]
 ----
 
-The configuration does the following actions:
-
-. Configures the server to support both JAX-RS 2.0 and JSON-P 1.0. This is specified in the [hotspot=3-6 file=0]`featureManager` element.
 . Configures the server to pick up the HTTP port numbers from variables, which are then specified in
-the Maven `pom.xml` file. This is specified in the [hotspot=8-9 file=0]`httpEndpoint` element. Variables use the syntax `${variableName}`.
+the Maven hot`pom.xml` file. This is specified in the [hotspot=8-9 file=0]`httpEndpoint` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven
-`pom.xml` file. This is specified in the [hotspot=11 file=0]`webApplication` element.
+[hotspot=1=203 file=1]`pom.xml` file. This is specified in the [hotspot=11 file=0]`webApplication` element.
 
-The variables being used in the `server.xml` file are provided by the [hotspot=147-151 file=1]`<bootstrapProperties/>` section
+The variables being used in the [hotspot=1-12 file=0]`server.xml` file are provided by the [hotspot=147-151 file=1]`<bootstrapProperties/>` section
 of the Maven [hotspot=1-203 file=1]`pom.xml`:
 
 [role="command"]
