@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>net.wasdev.wlp.maven.parent</groupId>
+        <artifactId>liberty-maven-app-parent</artifactId>
+        <version>RELEASE</version>
+    </parent>
     <groupId>io.openliberty.guides</groupId>
     <artifactId>rest</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -111,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
@@ -129,7 +133,6 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>2.6.1</version>
                 <configuration>
                     <assemblyArtifact>
                          <groupId>io.openliberty</groupId>
@@ -150,46 +153,11 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>install-liberty</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>install-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>install-app</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>install-apps</goal>
-                        </goals>
                         <configuration>
                             <looseApplication>true</looseApplication>
                             <stripVersion>true</stripVersion>
                             <installAppPackages>project</installAppPackages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>start-server</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>test-start-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>stop-server</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>test-stop-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>package-app</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>package-server</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/wlp-package</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -198,7 +166,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>integration-test</phase>

@@ -89,9 +89,9 @@ In this application, a resource might be a system property, or a set of system p
 to have a single class handle multiple different resources, but keeping a clean separation between types
 of resources helps with maintainability in the long run.
 
-[role="code_command hotspot=1-34", subs="quotes"]
+[role="code_command hotspot=12-34", subs="quotes"]
 ----
-Create the PropertiesResource class.
+Create the `PropertiesResource` class.
 `src/main/java/io/openliberty/guides/rest/PropertiesResource.java`
 ----
 
@@ -103,12 +103,12 @@ the `@Path` annotation in this class indicates that the resource is available at
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
-by the annotations specified on the methods. In the application you are building, an HTTP [hotspot=14-34]`GET` request
+by the annotations specified on the methods. In the application you are building, an HTTP [hotspot=14-33]`GET` request
 to the `System/properties` path results in the system properties being returned.
 
 The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
 method. The [hotspot=15]`@Produces` annotation indicates the format of the content that will be returned, the
-value of the `@Produces` annotation will be specified in the HTTP `Content-Type` response header.
+value of the [hotspot=15]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
@@ -145,7 +145,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot=1-12", subs="quotes"]
 ----
-Edit the file to update the placeholder text.
+Edit the server configuration file.
 `src/main/liberty/config/server.xml`
 ----
 
@@ -162,12 +162,13 @@ the Maven `pom.xml` file. This is specified in the [hotspot=8-9]`httpEndpoint` e
 . Configures the server to run the produced Web application on a context root specified in the Maven
 `pom.xml` file. This is specified in the [hotspot=11]`webApplication` element.
 
-The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
-of the Maven `pom.xml`:
+The variables being used in the `server.xml` file are provided by the [hotspot=147-151]`<bootstrapProperties/>` section
+of the Maven [hotspot=1-203]`pom.xml`:
 
-[source,xml,indent=0,role="no_copy"]
+pom.xml
+[source,xml,role="code_column"]
 ----
-include::finish/pom.xml[tag=bootstrap]
+include::finish/pom.xml[]
 ----
 
 [role="command"]
@@ -186,7 +187,7 @@ does the latter.
 
 [role="code_command hotspot=1-43", subs="quotes"]
 ----
-Create the test class file.
+Create the `EndpointTest` class.
 `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
 ----
 
