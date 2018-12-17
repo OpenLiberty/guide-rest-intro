@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation=
+         "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.wasdev.wlp.maven.parent</groupId>
@@ -124,7 +127,8 @@
                             <excludes>
                                 <exclude>**/it/**</exclude>
                             </excludes>
-                            <reportsDirectory>${project.build.directory}/test-reports/unit</reportsDirectory>
+                            <reportsDirectory>${project.build.directory}/test-reports/unit
+                                             </reportsDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -180,7 +184,8 @@
                             </includes>
                             <!-- tag::testsysprops[] -->
                             <systemPropertyVariables>
-                                <liberty.test.port>${testServerHttpPort}</liberty.test.port>
+                                <liberty.test.port>${testServerHttpPort}
+                                </liberty.test.port>
                                 <war.name>${warContext}</war.name>
                             </systemPropertyVariables>
                             <!-- end::testsysprops[] -->
@@ -194,8 +199,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
-                    <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
+                    <summaryFile>${project.build.directory}
+                                 /test-reports/it/failsafe-summary.xml</summaryFile>
+                    <reportsDirectory>${project.build.directory}/test-reports/it
+                                    </reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>

@@ -44,7 +44,8 @@ public class EndpointTest {
         // end::request[]
 
         // tag::response[]
-        assertEquals("Incorrect response code from " + url, Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals("Incorrect response code from " + url, 
+                     Response.Status.OK.getStatusCode(), response.getStatus());
         // end::response[]
 
         // tag::body[]

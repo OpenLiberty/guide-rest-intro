@@ -1,7 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation=
+         "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>net.wasdev.wlp.maven.parent</groupId>
+        <artifactId>liberty-maven-app-parent</artifactId>
+        <version>RELEASE</version>
+    </parent>
     <groupId>io.openliberty.guides</groupId>
     <artifactId>rest</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -12,9 +19,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- tag::appdetails[] -->
         <app.name>LibertyProject</app.name>
         <testServerHttpPort>9080</testServerHttpPort>
         <testServerHttpsPort>9443</testServerHttpsPort>
+        <!-- end::appdetails[] -->
         <warContext>${app.name}</warContext>
         <package.file>${project.build.directory}/${app.name}.zip</package.file>
         <packaging.type>usr</packaging.type>
@@ -109,7 +118,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
@@ -118,7 +127,8 @@
                             <excludes>
                                 <exclude>**/it/**</exclude>
                             </excludes>
-                            <reportsDirectory>${project.build.directory}/test-reports/unit</reportsDirectory>
+                            <reportsDirectory>${project.build.directory}/test-reports/unit
+                                             </reportsDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -127,7 +137,6 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>2.6.1</version>
                 <configuration>
                     <assemblyArtifact>
                          <groupId>io.openliberty</groupId>
@@ -138,54 +147,21 @@
                     <configFile>src/main/liberty/config/server.xml</configFile>
                     <packageFile>${package.file}</packageFile>
                     <include>${packaging.type}</include>
+                    <!-- tag::bootstrap[] -->
                     <bootstrapProperties>
                         <default.http.port>${testServerHttpPort}</default.http.port>
                         <default.https.port>${testServerHttpsPort}</default.https.port>
                         <app.context.root>${warContext}</app.context.root>
                     </bootstrapProperties>
+                    <!-- end::bootstrap[] -->
                 </configuration>
                 <executions>
                     <execution>
-                        <id>install-liberty</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>install-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>install-app</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>install-apps</goal>
-                        </goals>
                         <configuration>
                             <looseApplication>true</looseApplication>
                             <stripVersion>true</stripVersion>
                             <installAppPackages>project</installAppPackages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>start-server</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>test-start-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>stop-server</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>test-stop-server</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>package-app</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>package-server</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/wlp-package</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -194,7 +170,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
@@ -206,10 +182,13 @@
                             <includes>
                                 <include>**/it/**</include>
                             </includes>
+                            <!-- tag::testsysprops[] -->
                             <systemPropertyVariables>
-                                <liberty.test.port>${testServerHttpPort}</liberty.test.port>
+                                <liberty.test.port>${testServerHttpPort}
+                                </liberty.test.port>
                                 <war.name>${warContext}</war.name>
                             </systemPropertyVariables>
+                            <!-- end::testsysprops[] -->
                         </configuration>
                     </execution>
                     <execution>
@@ -220,8 +199,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
-                    <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
+                    <summaryFile>${project.build.directory}
+                                 /test-reports/it/failsafe-summary.xml</summaryFile>
+                    <reportsDirectory>${project.build.directory}/test-reports/it
+                                    </reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>
