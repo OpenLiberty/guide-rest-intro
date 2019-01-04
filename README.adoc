@@ -100,14 +100,14 @@ This resource class has quite a bit of code in it, so let's break it down into m
 
 The [hotspot=11]`@Path` annotation on the class indicates that this resource responds to the `properties` path
 in the JAX-RS application. The `@ApplicationPath` annotation in the application class together with
-the `@Path` annotation in this class indicates that the resource is available at the `System/properties`
+the [hotspot=11]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
 by the annotations specified on the methods. In the application you are building, an HTTP [hotspot=14-33]`GET` request
 to the `System/properties` path results in the system properties being returned.
 
-The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
+The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP [hotspot=14]`GET`
 method. The [hotspot=15]`@Produces` annotation indicates the format of the content that will be returned, the
 value of the [hotspot=15]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
@@ -121,7 +121,7 @@ gap in the specification is fixed in Java EE 8 with the inclusion of JSON-B.
 
 The method body does the following actions:
 
-. Creates a [hotspot=18]`JsonObjectBuilder` object using the `Json` class. The `JsonObjectBuilder` is then used
+. Creates a [hotspot=18]`JsonObjectBuilder` object using the `Json` class. The [hotspot=18]`JsonObjectBuilder` is then used
 to populate a `JsonObject` with values.
 . Calls the [hotspot=20]`getProperties` method on the `System` class to get a `Properties` object that contains
 all the system properties.
@@ -227,7 +227,7 @@ class registered with it by calling the [hotspot=23 file=0]`register` method and
 
 To call the JAX-RS service using the JAX-RS client, you first create a `WebTarget` object by calling
 the [hotspot=25 file=0]`target` method providing the URL. To cause the HTTP request to occur first the [hotspot=26 file=0]`request` method
-on `WebTarget` and then the [hotspot=26 file=0]`get` method on the returned object need to be called. The `get` method
+on `WebTarget` and then the [hotspot=26 file=0]`get` method on the returned object need to be called. The [hotspot=26 file=0]`get` method
 call is a synchronous call that blocks until a response is received. This call returns a `Response`
 object, which can be interrogated to determine whether the request was successful.
 
