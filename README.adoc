@@ -104,10 +104,10 @@ the [hotspot=11]`@Path` annotation in this class indicates that the resource is 
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
-by the annotations specified on the methods. In the application you are building, an HTTP [hotspot=14-33]`GET` request
+by the annotations specified on the methods. In the application you are building, an HTTP `GET` request
 to the `System/properties` path results in the system properties being returned.
 
-The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP [hotspot=14]`GET`
+The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
 method. The [hotspot=15]`@Produces` annotation indicates the format of the content that will be returned, the
 value of the [hotspot=15]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
