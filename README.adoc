@@ -215,7 +215,7 @@ port and the application context root are key, and are dictated by the server co
 information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot=1-210 file=1]`pom.xml`
 file. Refer to the [hotspot=1-210 file=1]`pom.xml` file to see how the application information such as the [hotspot=22 file=1]`<app.name/>`, [hotspot=23 file=1]`<testServerHttpPort/>` and [hotspot=24 file=1]`<testServerHttpsPort/>` elements are provided in the file.
 
-These Maven properties are then passed to the Java test program as the [hotspot=181-185 file=1]`<systemPropertyVariables/>` element in
+These Maven properties are then passed to the Java test program as the [hotspot=187-191 file=1]`<systemPropertyVariables/>` element in
 the [hotspot=1-210 file=1]`pom.xml` file.
 
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=18-19 file=0]`getProperty` method
