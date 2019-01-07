@@ -14,6 +14,7 @@
 :page-essential: true
 :page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+:guide-author: Open Liberty
 :page-tags: ['REST', 'MicroProfile', 'microservices', 'Java EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
@@ -242,6 +243,16 @@ Check the response body to ensure it returned the right information. Since the c
 are running on the same machine, it is reasonable to expect that the system properties for the local
 and remote JVM would be the same. In this case, an assertion is made that the `os.name` system property
 for both JVMs is the same. You could write additional assertions [hotspot=33-35 file=0]`assertEquals` to check for more values.
+
+// =================================================================================================
+// Running the tests
+// =================================================================================================
+
+If the server is still running from the previous steps, stop it using the Maven liberty:stop-server goal from command line in the start directory:
+[roel='command']
+```
+mvn liberty:stop-server
+```
 
 To rebuild, run the tests, and see that the test passes, run the Maven `install` command: 
 
