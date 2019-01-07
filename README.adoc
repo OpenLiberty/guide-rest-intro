@@ -244,9 +244,7 @@ are running on the same machine, it is reasonable to expect that the system prop
 and remote JVM would be the same. In this case, an assertion is made that the `os.name` system property
 for both JVMs is the same. You could write additional assertions [hotspot=33-35 file=0]`assertEquals` to check for more values.
 
-// =================================================================================================
-// Running the tests
-// =================================================================================================
+=== Running the tests
 
 If the server is still running from the previous steps, stop it using the Maven liberty:stop-server goal from command line in the start directory:
 [roel='command']
