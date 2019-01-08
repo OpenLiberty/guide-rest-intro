@@ -173,10 +173,16 @@ the Maven `pom.xml` file. This is specified in the [hotspot=8-9 file=0]`httpEndp
 `pom.xml` file. This is specified in the [hotspot=11 file=0]`webApplication` element.
 
 The variables being used in the [hotspot=1-12 file=0]`server.xml` file are provided by the [hotspot=148-152 file=1]`<bootstrapProperties/>` section
-of the Maven [hotspot=1-210 file=1]`pom.xml`:
+of the Maven [hotspot=1-210 file=1]`pom.xml`。
 
 [role="command"]
 include::{common-includes}/mvnbuild.adoc[]
+
+When you are done checking out the services, stop the Open Liberty server by running the following command:
+[role="command"]
+```
+mvn liberty:stop-server
+```
 
 == Testing the service
 
