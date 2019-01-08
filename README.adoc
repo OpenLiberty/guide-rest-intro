@@ -69,7 +69,7 @@ single JAX-RS application is common, although multiple are possible.
 Navigate to the `start` directory to begin.
 [role="code_command hotspot=7-9",subs="quotes"]
 ----
-Create the `SystemApplication` class.
+#Create the `SystemApplication` class.#
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
@@ -93,24 +93,24 @@ of resources helps with maintainability in the long run.
 
 [role="code_command hotspot=12-34", subs="quotes"]
 ----
-Create the `PropertiesResource` class.
+#Create the `PropertiesResource` class.#
 `src/main/java/io/openliberty/guides/rest/PropertiesResource.java`
 ----
 
 This resource class has quite a bit of code in it, so let's break it down into manageable chunks.
 
-The [hotspot=11]`@Path` annotation on the class indicates that this resource responds to the `properties` path
-in the JAX-RS application. The `@ApplicationPath` annotation in the application class together with
-the [hotspot=11]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
+The [hotspot=11 file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path
+in the JAX-RS application. The [hotspot=6 file=1]`@ApplicationPath` annotation in the [hotspot=7-9 file=1]`SystemApplication` class together with
+the [hotspot=11 file=0]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
 by the annotations specified on the methods. In the application you are building, an HTTP `GET` request
 to the `System/properties` path results in the system properties being returned.
 
-The [hotspot=14]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
-method. The [hotspot=15]`@Produces` annotation indicates the format of the content that will be returned, the
-value of the [hotspot=15]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
+The [hotspot=14 file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
+method. The [hotspot=15 file=0]`@Produces` annotation indicates the format of the content that will be returned, the
+value of the [hotspot=15 file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
@@ -122,23 +122,29 @@ gap in the specification is fixed in Java EE 8 with the inclusion of JSON-B.
 
 The method body does the following actions:
 
-. Creates a [hotspot=18]`JsonObjectBuilder` object using the `Json` class. The [hotspot=18]`JsonObjectBuilder` is then used
+. Creates a [hotspot=18 file=0]`JsonObjectBuilder` object using the `Json` class. The [hotspot=18 file=0]`JsonObjectBuilder` is then used
 to populate a `JsonObject` with values.
-. Calls the [hotspot=20]`getProperties` method on the `System` class to get a `Properties` object that contains
+. Calls the [hotspot=20 file=0]`getProperties` method on the `System` class to get a `Properties` object that contains
 all the system properties.
-. Calls the [hotspot=21]`entrySet` method on the `Properties` object to get a `Set` of all the entries.
-. Convert the `Set` to a [hotspot=22]`Stream` (new in Java SE 8) by calling the `stream` method. Streams make
+. Calls the [hotspot=21 file=0]`entrySet` method on the `Properties` object to get a `Set` of all the entries.
+. Convert the `Set` to a `Stream` (new in Java SE 8) by calling the [hotspot=22 file=0]`stream` method. Streams make
 working through all the entries in a list very simple.
-. Calls the [hotspot=23-24]`forEach` method on the `Stream` passing in a function that will be invoked for each
-entry in the `Stream`. The function passed in will call the `add` method on the `JsonObjectBuilder`
+. Calls the [hotspot=23-24 file=0]`forEach` method on the `Stream` passing in a function that will be invoked for each
+entry in the `Stream`. The function passed in will call the [hotspot=23-24 file=0]`add` method on the [hotspot=18 file=0]`JsonObjectBuilder`
 for every entry in the stream. The key and value for the `JsonObject` will be obtained by calling
-the `getKey` and `getValue` methods on the `Map.Entry` objects in the stream.
-. Returns the `JsonObject` by calling the [hotspot=26]`build` method on the `JsonObjectBuilder`.
+the [hotspot=23 file=0]`getKey` and [hotspot=24 file=0]`getValue` methods on the `Map.Entry` objects in the stream.
+. Returns the `JsonObject` by calling the [hotspot=26 file=0]`build` method on the [hotspot=18 file=0]`JsonObjectBuilder`.
 
 PropertiesResource.java
 [source,java,linenums,role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment]
+----
+
+SystemApplication.java
+[source,java,linenums,role='code_column']
+----
+include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
 ----
 
 == Configuring the server
@@ -147,7 +153,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot=1-12", subs="quotes"]
 ----
-Create the server configuration file.
+#Create the server configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
@@ -168,9 +174,9 @@ include::finish/pom.xml[tags=**]
 ----
 
 . Configures the server to pick up the HTTP port numbers from variables, which are then specified in
-the Maven `pom.xml` file. This is specified in the [hotspot=8-9 file=0]`httpEndpoint` element. Variables use the syntax `${variableName}`.
+the Maven [hotspot=1-210 file=1]`pom.xml` file. This is specified in the [hotspot=8-9 file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven
-`pom.xml` file. This is specified in the [hotspot=11 file=0]`webApplication` element.
+[hotspot=1-210 file=1]`pom.xml` file. This is specified in the [hotspot=11 file=0]`<webApplication/>` element.
 
 The variables being used in the [hotspot=1-12 file=0]`server.xml` file are provided by the [hotspot=148-152 file=1]`<bootstrapProperties/>` section
 of the Maven [hotspot=1-210 file=1]`pom.xml`。
@@ -197,7 +203,7 @@ does the latter.
 
 [role="code_command hotspot=14-43", subs="quotes"]
 ----
-Create the `EndpointTest` class.
+#Create the `EndpointTest` class.#
 `src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
 ----
 
@@ -235,7 +241,7 @@ class registered with it by calling the [hotspot=23 file=0]`register` method and
 To call the JAX-RS service using the JAX-RS client, you first create a `WebTarget` object by calling
 the [hotspot=25 file=0]`target` method providing the URL. To cause the HTTP request to occur first the [hotspot=26 file=0]`request` method
 on `WebTarget` and then the [hotspot=26 file=0]`get` method on the returned object need to be called. The [hotspot=26 file=0]`get` method
-call is a synchronous call that blocks until a response is received. This call returns a `Response`
+call is a synchronous call that blocks until a response is received. This call returns a [hotspot=26 file=0]`Response`
 object, which can be interrogated to determine whether the request was successful.
 
 The first thing to check is that a `200` response was received. The JUnit [hotspot=28-29 file=0]`assertEquals` method can
@@ -253,7 +259,7 @@ for both JVMs is the same. You could write additional assertions [hotspot=33-35 
 === Running the tests
 
 If the server is still running from the previous steps, stop it using the Maven liberty:stop-server goal from command line in the start directory:
-[roel="command"]
+[role="command"]
 ```
 mvn liberty:stop-server
 ```
