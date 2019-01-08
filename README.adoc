@@ -15,7 +15,7 @@
 :page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
 :guide-author: Open Liberty
-:page-tags: ['REST', 'MicroProfile', 'microservices', 'Java EE']
+:page-tags: ['MicroProfile', 'Java EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :repo-description: Visit the https://openliberty.io/guides/{projectid}.html[website] for the rendered version of the guide.
