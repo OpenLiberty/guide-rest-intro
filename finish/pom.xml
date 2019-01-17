@@ -42,6 +42,19 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Open Liberty features -->
+        <dependency>
+            <groupId>io.openliberty.features</groupId>
+            <artifactId>jaxrs-2.1</artifactId>
+            <type>esa</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.openliberty.features</groupId>
+            <artifactId>jsonp-1.1</artifactId>
+            <type>esa</type>
+            <scope>provided</scope>
+        </dependency>
         <!-- For tests -->
         <dependency>
             <groupId>junit</groupId>
@@ -66,19 +79,6 @@
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
             <scope>test</scope>
-        </dependency>
-        <!-- Open Liberty features -->
-        <dependency>
-            <groupId>io.openliberty.features</groupId>
-            <artifactId>jaxrs-2.1</artifactId>
-            <type>esa</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.openliberty.features</groupId>
-            <artifactId>jsonp-1.1</artifactId>
-            <type>esa</type>
-            <scope>provided</scope>
         </dependency>
         <!-- For JDK 9 & 10 Support -->
         <dependency>
