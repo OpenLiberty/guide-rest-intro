@@ -109,7 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
@@ -194,7 +194,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
@@ -204,7 +204,7 @@
                         </goals>
                         <configuration>
                             <includes>
-                                <include>**/it/**</include>
+                                <include>**/it/**/*.java</include>
                             </includes>
                             <systemPropertyVariables>
                                 <liberty.test.port>${testServerHttpPort}</liberty.test.port>
