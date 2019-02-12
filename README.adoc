@@ -193,7 +193,7 @@ mvn liberty:stop-server
 == Testing the service
 
 You could test this service manually by starting a server and pointing a web browser at the
-http://localhost:9080/LibertyProject/System/properties URL. Automated tests are a much better
+http://localhost:9080/LibertyProject/System/properties[window="_blank"] URL. Automated tests are a much better
 approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client
 API provide a very simple environment to test the application.
 
@@ -299,9 +299,9 @@ You developed a REST service by using JAX-RS, JSON-P, and in Open Liberty.
 
 Learn more about MicroProfile.
 
-https://microprofile.io/[See the MicroProfile specs]
+https://microprofile.io/[See the MicroProfile specs^]
 
-https://openliberty.io/docs/ref/microprofile[View the MicroProfile API]
+https://openliberty.io/docs/ref/microprofile[View the MicroProfile API^]
 
 
 include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[subs="attributes"]
