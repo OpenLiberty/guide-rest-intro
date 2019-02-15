@@ -186,7 +186,7 @@
                         </goals>
                         <configuration>
                             <includes>
-                                <include>**/it/**</include>
+                                <include>**/it/**/*.java</include>
                             </includes>
                             <!-- tag::testsysprops[] -->
                             <systemPropertyVariables>
