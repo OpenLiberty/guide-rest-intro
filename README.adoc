@@ -56,12 +56,14 @@ include::{common-includes}/gitclone.adoc[]
 
 == Creating a JAX-RS application
 
+Navigate to the `start` directory to begin.
+
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
 common path. You can think of the JAX-RS application as a wrapper for all of your resources. Having a
 single JAX-RS application is common, although multiple are possible.
 
-Navigate to the `start` directory to begin.
+
 [role="code_command hotspot",subs="quotes"]
 ----
 #Create the `SystemApplication` class.#
@@ -152,7 +154,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 `src/main/liberty/config/server.xml`
 ----
 
-Server.xml
+server.xml
 [source,xml,linenums,role="code_column"]
 ----
 include::finish/src/main/liberty/config/server.xml[]
@@ -174,10 +176,13 @@ the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=8-9 
 [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=11 file=0]`<webApplication/>` element.
 
 The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=148-152 file=1]`<bootstrapProperties/>` section
-of the Maven [hotspot file=1]`pom.xml`。
+of the Maven [hotspot file=1]`pom.xml`.
 
 [role="command"]
 include::{common-includes}/mvnbuild.adoc[]
+
+Check out the services at the
+http://localhost:9080/LibertyProject/System/properties[http://localhost:9080/LibertyProject/System/properties^] URL. 
 
 When you are done checking out the services, stop the Open Liberty server by running the following command:
 [role="command"]
@@ -288,7 +293,7 @@ assertion to a constant value that doesn't match the `os.name` system property.
 
 == Great work! You're done!
 
-You developed a REST service by using JAX-RS, JSON-P, and in Open Liberty.
+You developed a REST service in Open Liberty by using JAX-RS, JSON-P.
 
 == Related Links
 
