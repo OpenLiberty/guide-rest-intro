@@ -303,4 +303,4 @@ https://microprofile.io/[See the MicroProfile specs^]
 https://openliberty.io/docs/ref/microprofile[View the MicroProfile API^]
 
 
-include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[subs="attributes"]
+include::{common-includes}/attribution.adoc[subs="attributes"]
