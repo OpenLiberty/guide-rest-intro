@@ -84,17 +84,17 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.2.11</version>
+            <version>2.3.1</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>2.2.11</version>
+            <version>2.3.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.2.11</version>
+            <version>2.3.2</version>
         </dependency>
         <dependency>
             <groupId>javax.activation</groupId>
@@ -167,7 +167,7 @@
                     <execution>
                         <id>package-app</id>
                         <configuration>
-                            <outputDirectory>tasrget/wlp-package</outputDirectory>
+                            <outputDirectory>target/wlp-package</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
