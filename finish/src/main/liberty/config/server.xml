@@ -6,7 +6,7 @@
   </featureManager>
 
   <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
-      id="defaultHttpEndpoint" host="*" />
+                id="defaultHttpEndpoint" host="*" />
 
   <webApplication location="rest.war" contextRoot="${app.context.root}"/>
 </server>
