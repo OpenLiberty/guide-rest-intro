@@ -257,7 +257,7 @@ for both JVMs is the same. You could write additional assertions [hotspot=33-35 
 
 === Running the tests
 
-If the server is still running from the previous steps, stop it using the Maven liberty:stop-server goal from command line in the start directory:
+If the server is still running from the previous steps, stop it using the Maven `liberty:stop-server` goal from command line in the start directory:
 [role="command"]
 ```
 mvn liberty:stop-server
