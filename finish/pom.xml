@@ -205,10 +205,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <summaryFile>${project.build.directory}
-                                 /test-reports/it/failsafe-summary.xml</summaryFile>
-                    <reportsDirectory>${project.build.directory}/test-reports/it
-                                    </reportsDirectory>
+                    <summaryFile>
+                        ${project.build.directory}/test-reports/it/failsafe-summary.xml
+                    </summaryFile>
+                    <reportsDirectory>
+                        ${project.build.directory}/test-reports/it
+                    </reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>
