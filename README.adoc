@@ -177,8 +177,12 @@ include::finish/pom.xml[tags=**]
 The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=148-152 file=1]`<bootstrapProperties/>` section
 of the Maven [hotspot file=1]`pom.xml`.
 
-[role="command"]
-include::{common-includes}/mvnbuild.adoc[]
+To try out the application, first navigate to the `finish` directory. Next, execute the following
+Maven goals to build the application and run it inside of Open Liberty:
+[role='command']
+```
+mvn install liberty:start-server
+```
 
 Check out the service you created at the
 http://localhost:9080/LibertyProject/System/properties[http://localhost:9080/LibertyProject/System/properties^] URL. 
