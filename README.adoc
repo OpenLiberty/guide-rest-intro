@@ -54,6 +54,34 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
+=== Try what you'll build
+To try out the application, first navigate to the `finish` directory and then run the following Maven goals to build the application and run it inside Open Liberty:
+[role='command']
+```
+mvn install
+```
+
+This command builds the application and creates a `.war` file in the target directory. It also
+configures and installs Open Liberty into the `target/liberty/wlp` directory.
+
+Next, run the Maven `liberty:start-server` goal:
+[role='command']
+```
+mvn liberty:start-server
+```
+
+This goal starts an Open Liberty server instance. Your Maven `pom.xml` is already configured to start
+the application in this server instance.
+
+Check out the service at the
+http://localhost:9080/LibertyProject/System/properties[http://localhost:9080/LibertyProject/System/properties^] URL. 
+
+When you are done checking out the services, stop the Open Liberty server by running the following command:
+[role="command"]
+```
+mvn liberty:stop-server
+```
+
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
