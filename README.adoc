@@ -54,7 +54,6 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
-=== Try what you'll build
 include::{common-includes}/trywhatyoubuild-beg.adoc[]
 
 Check out the service at the
