@@ -55,17 +55,7 @@ return a `200 OK` response that contains all of the JVM's system properties.
 include::{common-includes}/gitclone.adoc[]
 
 === Try what you'll build
-To try out the application, first navigate to the `finish` directory and then run the following Maven goals to build the application and run it inside Open Liberty:
-[role='command']
-```
-mvn install
-```
-
-Next, run the Maven `liberty:start-server` goal:
-[role='command']
-```
-mvn liberty:start-server
-```
+include::{common-includes}/trywhatyoubuild-beg.adoc[]
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
