@@ -54,6 +54,14 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
+include::{common-includes}/trywhatyoubuild-beg.adoc[]
+
+Check out the service at the
+http://localhost:9080/LibertyProject/System/properties[^] URL. 
+
+[role=command]
+include::{common-includes}/trywhatyoubuild-end.adoc[]
+
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
@@ -181,7 +189,7 @@ of the Maven [hotspot file=1]`pom.xml`.
 include::{common-includes}/mvnbuild.adoc[]
 
 Check out the service you created at the
-http://localhost:9080/LibertyProject/System/properties[http://localhost:9080/LibertyProject/System/properties^] URL. 
+http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
 When you are done checking out the services, stop the Open Liberty server by running the following command:
 [role="command"]
@@ -192,7 +200,7 @@ mvn liberty:stop-server
 == Testing the service
 
 You could test this service manually by starting a server and pointing a web browser at the
-http://localhost:9080/LibertyProject/System/properties[http://localhost:9080/LibertyProject/System/properties^] URL. Automated tests are a much better
+http://localhost:9080/LibertyProject/System/properties[^] URL. Automated tests are a much better
 approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client
 API provide a very simple environment to test the application.
 
