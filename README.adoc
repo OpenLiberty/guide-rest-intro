@@ -122,8 +122,7 @@ response is `application/json` with `MediaType.APPLICATION_JSON` instead of the 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS specification mandates JSON-Processing
 (JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
 allows the `Properties` object to be returned instead. Although this conversion would allow for a
-simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard. This
-gap in the specification is fixed in Java EE 8 with the inclusion of JSON-B.
+simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard.
 
 The method body does the following actions:
 
@@ -132,7 +131,7 @@ to populate a `JsonObject` with values.
 . Calls the [hotspot=20 file=0]`getProperties` method on the `System` class to get a `Properties` object that contains
 all the system properties.
 . Calls the [hotspot=21 file=0]`entrySet` method on the `Properties` object to get a `Set` of all the entries.
-. Convert the `Set` to a `Stream` (new in Java SE 8) by calling the [hotspot=22 file=0]`stream` method. Streams make
+. Convert the `Set` to a `Stream` by calling the [hotspot=22 file=0]`stream` method. Streams make
 working through all the entries in a list very simple.
 . Calls the [hotspot=23-24 file=0]`forEach` method on the `Stream` passing in a function that will be invoked for each
 entry in the `Stream`. The function passed in will call the [hotspot=23-24 file=0]`add` method on the [hotspot=18 file=0]`JsonObjectBuilder`
