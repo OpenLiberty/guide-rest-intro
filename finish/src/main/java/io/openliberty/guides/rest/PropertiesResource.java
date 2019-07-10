@@ -12,9 +12,8 @@
  // end::comment[]
 package io.openliberty.guides.rest;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
+import java.util.Properties;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -28,17 +27,8 @@ public class PropertiesResource {
     // tag::getProperties[]
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject getProperties() {
-
-        JsonObjectBuilder builder = Json.createObjectBuilder();
-
-        System.getProperties()
-              .entrySet()
-              .stream()
-              .forEach(entry -> builder.add((String)entry.getKey(),
-                                            (String)entry.getValue()));
-
-       return builder.build();
+    public Properties getProperties() {
+        return System.getProperties();
     }
     // end::getProperties[]
 }

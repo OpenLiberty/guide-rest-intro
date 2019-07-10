@@ -14,16 +14,20 @@ package it.io.openliberty.guides.rest;
 
 import static org.junit.Assert.assertEquals;
 
-import javax.json.JsonObject;
+import java.util.Properties;
+
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-import org.apache.cxf.jaxrs.provider.jsrjsonp.JsrJsonpProvider;
 import org.junit.Test;
 
 public class EndpointTest {
+    
+    private static final Jsonb jsonb = JsonbBuilder.create();
 
     @Test
     public void testGetProperties() {
@@ -35,7 +39,6 @@ public class EndpointTest {
 
         // tag::clientSetup[]
         Client client = ClientBuilder.newClient();
-        client.register(JsrJsonpProvider.class);
         // end::clientSetup[]
 
         // tag::request[]
@@ -49,11 +52,12 @@ public class EndpointTest {
         // end::response[]
 
         // tag::body[]
-        JsonObject obj = response.readEntity(JsonObject.class);
+        String json = response.readEntity(String.class);
+        Properties sysProps = jsonb.fromJson(json, Properties.class);
 
         assertEquals("The system property for the local and remote JVM should match",
                      System.getProperty("os.name"),
-                     obj.getString("os.name"));
+                     sysProps.getProperty("os.name"));
         // end::body[]
         response.close();
     }
