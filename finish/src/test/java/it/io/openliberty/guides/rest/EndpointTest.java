@@ -29,27 +29,31 @@ public class EndpointTest {
     
     private static final Jsonb jsonb = JsonbBuilder.create();
 
+    // tag::test[]
     @Test
+    // end::test[]
     public void testGetProperties() {
         // tag::systemProperties[]
         String port = System.getProperty("liberty.test.port");
         String war = System.getProperty("war.name");
-        String url = "http://localhost:" + port + "/" + war + "/";
         // end::systemProperties[]
+        String url = "http://localhost:" + port + "/" + war + "/";
 
         // tag::clientSetup[]
         Client client = ClientBuilder.newClient();
         // end::clientSetup[]
 
-        // tag::request[]
+        // tag::target[]
         WebTarget target = client.target(url + "System/properties");
+        // end::target[]
+        // tag::requestget[]
         Response response = target.request().get();
-        // end::request[]
+        // end::requestget[]
 
-        // tag::response[]
+        // tag::assertequals[]
         assertEquals("Incorrect response code from " + url, 
                      Response.Status.OK.getStatusCode(), response.getStatus());
-        // end::response[]
+        // end::assertequals[]
 
         // tag::body[]
         String json = response.readEntity(String.class);

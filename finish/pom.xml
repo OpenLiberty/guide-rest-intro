@@ -19,11 +19,15 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <!-- tag::appdetails[] -->
+        <!-- tag::appname[] -->
         <app.name>LibertyProject</app.name>
+        <!-- end::appname[] -->
+        <!-- tag::httpport[] -->
         <testServerHttpPort>9080</testServerHttpPort>
+        <!-- end::httpport[] -->
+        <!-- tag::httpsport[] -->
         <testServerHttpsPort>9443</testServerHttpsPort>
-        <!-- end::appdetails[] -->
+        <!-- end::httpsport[] -->
         <warContext>${app.name}</warContext>
         <package.file>${project.build.directory}/${app.name}.zip</package.file>
         <packaging.type>usr</packaging.type>

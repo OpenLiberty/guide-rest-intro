@@ -77,9 +77,9 @@ common path. You can think of the JAX-RS application as a wrapper for all of you
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
-The [hotspot=7-9]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
+The [hotspot=systemApplication]`SystemApplication` class extends the `Application` class, which in turn associates all JAX-RS
 resource classes in the WAR file with this JAX-RS application, making them available under the common
-path specified in the [hotspot=7-9]`SystemApplication` class. The [hotspot=6]`@ApplicationPath` annotation has a
+path specified in the [hotspot=systemApplication]`SystemApplication` class. The [hotspot=applicationPath]`@ApplicationPath` annotation has a
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
 SystemApplication.java
@@ -103,18 +103,18 @@ of resources helps with maintainability in the long run.
 
 This resource class has quite a bit of code in it, so let's break it down into manageable chunks.
 
-The [hotspot=11 file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path
-in the JAX-RS application. The [hotspot=6 file=1]`@ApplicationPath` annotation in the [hotspot=7-9 file=1]`SystemApplication` class together with
-the [hotspot=11 file=0]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
+The [hotspot=path file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path
+in the JAX-RS application. The [hotspot=applicationPath file=1]`@ApplicationPath` annotation in the [hotspot=systemApplication file=1]`SystemApplication` class together with
+the [hotspot=path file=0]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
 by the annotations specified on the methods. In the application you are building, an HTTP `GET` request
 to the `System/properties` path results in the system properties being returned.
 
-The [hotspot=14 file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
-method. The [hotspot=15 file=0]`@Produces` annotation indicates the format of the content that will be returned, the
-value of the [hotspot=15 file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
+The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
+method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned, the
+value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
@@ -155,11 +155,11 @@ include::finish/src/main/liberty/config/server.xml[]
 
 The configuration does the following actions:
 
-. Configures the server to enable JAX-RS. This is specified in the [hotspot=3-6 file=0]`featureManager` element.
+. Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 . Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=8-9 file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
+the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven
-[hotspot file=1]`pom.xml` file. This is specified in the [hotspot=11 file=0]`<webApplication/>` element.
+[hotspot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -167,7 +167,7 @@ pom.xml
 include::finish/pom.xml[tags=**]
 ----
 
-The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=148-152 file=1]`<bootstrapProperties/>` section
+The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=bootstrap file=1]`<bootstrapProperties/>` section
 of the Maven [hotspot file=1]`pom.xml`.
 
 [role="command"]
@@ -206,7 +206,7 @@ include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[ta
 ----
 
 This test class has more lines of code than the resource implementation. This situation is common.
-The test method is indicated with the [hotspot=16 file=0]`@Test` annotation.
+The test method is indicated with the [hotspot=test file=0]`@Test` annotation.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -217,18 +217,18 @@ include::finish/pom.xml[tags=**]
 The test code needs to know some information about the application in order to make requests. The server
 port and the application context root are key, and are dictated by the server configuration. While this
 information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=1]`pom.xml`
-file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=22 file=1]`<app.name/>`, [hotspot=23 file=1]`<testServerHttpPort/>` and [hotspot=24 file=1]`<testServerHttpsPort/>` elements are provided in the file.
+file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=appname file=1]`<app.name/>`, [hotspot=httpport file=1]`<testServerHttpPort/>` and [hotspot=httpsport file=1]`<testServerHttpsPort/>` elements are provided in the file.
 
-These Maven properties are then passed to the Java test program as the [hotspot=187-191 file=1]`<systemPropertyVariables/>` element in
+These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in
 the [hotspot file=1]`pom.xml` file.
 
-Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=18-19 file=0]`getProperty` method
+Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=systemProperties file=0]`getProperty` method
 to get the application details.
 
 To call the JAX-RS service using the JAX-RS client, first create a `WebTarget` object by calling
-the [hotspot=25 file=0]`target` method providing the URL. To cause the HTTP request to occur [hotspot=26 file=0]`request().get()` 
-is invoked on the `WebTarget`. The [hotspot=26 file=0]`get` method
-call is a synchronous call that blocks until a response is received. This call returns a [hotspot=26 file=0]`Response`
+the [hotspot=target file=0]`target` method providing the URL. To cause the HTTP request to occur [hotspot=requestget file=0]`request().get()` 
+is invoked on the `WebTarget`. The [hotspot=requestget file=0]`get` method
+call is a synchronous call that blocks until a response is received. This call returns a [hotspot=requestget file=0]`Response`
 object, which can be inspected to determine whether the request was successful.
 
 The first thing to check is that a `200` response was received. The JUnit [hotspot=28-29 file=0]`assertEquals` method can
@@ -237,7 +237,7 @@ be used for this.
 Check the response body to ensure it returned the right information. Since the client and the server
 are running on the same machine, it is reasonable to expect that the system properties for the local
 and remote JVM would be the same. In this case, an assertion is made that the `os.name` system property
-for both JVMs is the same. You could write additional assertions [hotspot=33-35 file=0]`assertEquals` to check for more values.
+for both JVMs is the same. You could write additional assertions [hotspot=assertequals file=0]`assertEquals` to check for more values.
 
 === Running the tests
 
