@@ -25,11 +25,11 @@
 [.hidden]
 NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
 
-Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 
 == What you'll learn
 
-You will learn how to build and test a simple REST service with JAX-RS and JSON-P, which will expose
+You will learn how to build and test a simple REST service with JAX-RS and JSON-B, which will expose
 the JVM's system properties. The REST service will respond to `GET` requests made to the `\http://localhost:9080/LibertyProject/System/properties` URL.
 
 The service responds to a `GET` request with a JSON representation of the system properties, where
@@ -68,8 +68,7 @@ Navigate to the `start` directory to begin.
 
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
-common path. You can think of the JAX-RS application as a wrapper for all of your resources. Having a
-single JAX-RS application is common, although multiple are possible.
+common path. You can think of the JAX-RS application as a wrapper for all of your resources.
 
 
 [role="code_command hotspot",subs="quotes"]
@@ -117,27 +116,14 @@ The [hotspot=14 file=0]`@GET` annotation on the method indicates that this metho
 method. The [hotspot=15 file=0]`@Produces` annotation indicates the format of the content that will be returned, the
 value of the [hotspot=15 file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
-response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using literal code such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
+response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
 
-JAX-RS supports a number of ways to marshal JSON. The JAX-RS specification mandates JSON-Processing
-(JSON-P) and JAX-B. Most JAX-RS implementations also support a Java POJO-to-JSON conversion, which
-allows the `Properties` object to be returned instead. Although this conversion would allow for a
-simpler implementation, it limits code portability as POJO-to-JSON conversion is non-standard.
+JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
+(JSON-B) and JAX-B. 
 
-The method body does the following actions:
-
-. Creates a [hotspot=18 file=0]`JsonObjectBuilder` object using the `Json` class. The [hotspot=18 file=0]`JsonObjectBuilder` is then used
-to populate a `JsonObject` with values.
-. Calls the [hotspot=20 file=0]`getProperties` method on the `System` class to get a `Properties` object that contains
-all the system properties.
-. Calls the [hotspot=21 file=0]`entrySet` method on the `Properties` object to get a `Set` of all the entries.
-. Convert the `Set` to a `Stream` by calling the [hotspot=22 file=0]`stream` method. Streams make
-working through all the entries in a list very simple.
-. Calls the [hotspot=23-24 file=0]`forEach` method on the `Stream` passing in a function that will be invoked for each
-entry in the `Stream`. The function passed in will call the [hotspot=23-24 file=0]`add` method on the [hotspot=18 file=0]`JsonObjectBuilder`
-for every entry in the stream. The key and value for the `JsonObject` will be obtained by calling
-the [hotspot=23 file=0]`getKey` and [hotspot=24 file=0]`getValue` methods on the `Map.Entry` objects in the stream.
-. Returns the `JsonObject` by calling the [hotspot=26 file=0]`build` method on the [hotspot=18 file=0]`JsonObjectBuilder`.
+The method body returns the result of `System.getProperties()` which is of type `java.util.Properties`. Since the method 
+is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to automatically convert the returned object
+to JSON data in the HTTP response.
 
 PropertiesResource.java
 [source,java,linenums,role='code_column']
@@ -169,8 +155,8 @@ include::finish/src/main/liberty/config/server.xml[]
 
 The configuration does the following actions:
 
-. Configures the server to support both JAX-RS and JSON-P. This is specified in the [hotspot=3-6 file=0]`featureManager` element.
-. Configures the server to pick up the HTTP port numbers from variables, which are then specified in
+. Configures the server to enable JAX-RS. This is specified in the [hotspot=3-6 file=0]`featureManager` element.
+. Configures the server to resolve the HTTP port numbers from variables, which are then specified in
 the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=8-9 file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the Maven
 [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=11 file=0]`<webApplication/>` element.
@@ -239,23 +225,14 @@ the [hotspot file=1]`pom.xml` file.
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=18-19 file=0]`getProperty` method
 to get the application details.
 
-The JAX-RS client can be used to make the REST call and convert the payload to and from a JSON-P
-representation. To get the JAX-RS client to do the conversion, the client needs to have the `JsrJsonpProvider`
-class registered with it by calling the [hotspot=23 file=0]`register` method and providing the `Class` object for the
-`JsrJsonpProvider` class.
-
-To call the JAX-RS service using the JAX-RS client, you first create a `WebTarget` object by calling
-the [hotspot=25 file=0]`target` method providing the URL. To cause the HTTP request to occur first the [hotspot=26 file=0]`request` method
-on `WebTarget` and then the [hotspot=26 file=0]`get` method on the returned object need to be called. The [hotspot=26 file=0]`get` method
+To call the JAX-RS service using the JAX-RS client, first create a `WebTarget` object by calling
+the [hotspot=25 file=0]`target` method providing the URL. To cause the HTTP request to occur [hotspot=26 file=0]`request().get()` 
+is invoked on the `WebTarget`. The [hotspot=26 file=0]`get` method
 call is a synchronous call that blocks until a response is received. This call returns a [hotspot=26 file=0]`Response`
-object, which can be interrogated to determine whether the request was successful.
+object, which can be inspected to determine whether the request was successful.
 
 The first thing to check is that a `200` response was received. The JUnit [hotspot=28-29 file=0]`assertEquals` method can
-be used for this. The first parameter is the error message that indicates why the test failed. The
-second parameter is the expected response code, and the third is the actual response code. It is
-important to associate the expected response code with the second parameter and the actual response
-with the third parameter. Otherwise, the error messages from JUnit will claim that the actual response
-is the expected one, which can cause confusion.
+be used for this.
 
 Check the response body to ensure it returned the right information. Since the client and the server
 are running on the same machine, it is reasonable to expect that the system properties for the local
