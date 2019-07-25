@@ -231,7 +231,7 @@ is invoked on the `WebTarget`. The [hotspot=requestget file=0]`get` method
 call is a synchronous call that blocks until a response is received. This call returns a [hotspot=requestget file=0]`Response`
 object, which can be inspected to determine whether the request was successful.
 
-The first thing to check is that a `200` response was received. The JUnit [hotspot=28-29 file=0]`assertEquals` method can
+The first thing to check is that a `200` response was received. The JUnit [hotspot=assertequals file=0]`assertEquals` method can
 be used for this.
 
 Check the response body to ensure it returned the right information. Since the client and the server
