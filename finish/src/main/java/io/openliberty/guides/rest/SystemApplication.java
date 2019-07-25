@@ -9,7 +9,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
- // end::comment[]
+// end::comment[]
 package io.openliberty.guides.rest;
 
 import javax.ws.rs.core.Application;

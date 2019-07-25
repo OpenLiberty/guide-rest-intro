@@ -11,7 +11,7 @@
                 id="defaultHttpEndpoint" host="*" />
   <!-- end::httpEndpoint[] -->
   
-  <!-- tag::webApplication -->
+  <!-- tag::webApplication[] -->
   <webApplication location="rest.war" contextRoot="${app.context.root}"/>
-  <!-- end::webApplication -->
+  <!-- end::webApplication[] -->
 </server>
