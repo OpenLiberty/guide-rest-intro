@@ -200,7 +200,7 @@ does the latter.
 ----
 
 EndpointTest.java
-[source,java,linenums,role="code_column"]
+[source, Java, linenums, role="code_column"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=**;!comment]
 ----
