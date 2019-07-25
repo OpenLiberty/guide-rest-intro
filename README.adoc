@@ -113,7 +113,7 @@ by the annotations specified on the methods. In the application you are building
 to the `System/properties` path results in the system properties being returned.
 
 The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
-method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned, the
+method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The
 value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
@@ -236,8 +236,8 @@ be used for this.
 
 Check the response body to ensure it returned the right information. Since the client and the server
 are running on the same machine, it is reasonable to expect that the system properties for the local
-and remote JVM would be the same. In this case, an assertion is made that the `os.name` system property
-for both JVMs is the same. You could write additional assertions [hotspot=assertequals file=0]`assertEquals` to check for more values.
+and remote JVM would be the same. In this case, an [hotspot=assertosname file=0]`assertion` is made that the `os.name` system property
+for both JVMs is the same. You could write additional assertions `assertEquals` to check for more values.
 
 === Running the tests
 

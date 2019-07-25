@@ -59,9 +59,11 @@ public class EndpointTest {
         String json = response.readEntity(String.class);
         Properties sysProps = jsonb.fromJson(json, Properties.class);
 
+        // tag::assertosname[]
         assertEquals("The system property for the local and remote JVM should match",
                      System.getProperty("os.name"),
                      sysProps.getProperty("os.name"));
+        // end::assertosname[]
         // end::body[]
         response.close();
     }
