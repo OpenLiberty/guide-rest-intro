@@ -71,7 +71,7 @@ modelled as a class. The second is a JAX-RS application, which groups all expose
 common path. You can think of the JAX-RS application as a wrapper for all of your resources.
 
 
-[role="code_command hotspot",subs="quotes"]
+[role="code_command hotspot" ,subs="quotes"]
 ----
 #Create the `SystemApplication` class.#
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
@@ -83,7 +83,7 @@ path specified in the [hotspot=systemApplication]`SystemApplication` class. The 
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
 SystemApplication.java
-[source,java,linenums,role='code_column']
+[source, Java, linenums, role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment]
 ----
