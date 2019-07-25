@@ -236,8 +236,8 @@ be used for this.
 
 Check the response body to ensure it returned the right information. Since the client and the server
 are running on the same machine, it is reasonable to expect that the system properties for the local
-and remote JVM would be the same. In this case, an [hotspot=assertosname file=0]`assertion` is made that the `os.name` system property
-for both JVMs is the same. You could write additional assertions `assertEquals` to check for more values.
+and remote JVM would be the same. In this case, an assertion [hotspot=assertosname file=0]`assertEquals` is made that the `os.name` system property
+for both JVMs is the same. You could write additional assertions to check for more values.
 
 === Running the tests
 
