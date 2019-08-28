@@ -4,11 +4,7 @@
          xsi:schemaLocation=
          "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>net.wasdev.wlp.maven.parent</groupId>
-        <artifactId>liberty-maven-app-parent</artifactId>
-        <version>RELEASE</version>
-    </parent>
+
     <groupId>io.openliberty.guides</groupId>
     <artifactId>rest</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -19,6 +15,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <!-- Plugin versions -->
+        <version.liberty-plugin>3.0.M1</version.liberty-plugin>
+        <version.maven-failsafe-plugin>3.0.0-M1</version.maven-failsafe-plugin>
+        <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
+        <version.maven-surefire-plugin>3.0.0-M1</version.maven-surefire-plugin>
         <!-- tag::appname[] -->
         <app.name>LibertyProject</app.name>
         <!-- end::appname[] -->
@@ -29,8 +31,6 @@
         <testServerHttpsPort>9443</testServerHttpsPort>
         <!-- end::httpsport[] -->
         <warContext>${app.name}</warContext>
-        <package.file>${project.build.directory}/${app.name}.zip</package.file>
-        <packaging.type>usr</packaging.type>
     </properties>
 
     <dependencyManagement>
@@ -88,48 +88,12 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>pom.xml</packagingExcludes>
-                </configuration>
-            </plugin>
-            <!-- Plugin to run unit tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <id>default-test</id>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/it/**</exclude>
-                            </excludes>
-                            <reportsDirectory>${project.build.directory}/test-reports/unit
-                                             </reportsDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- Enable liberty-maven plugin -->
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
+                <version>${version.liberty-plugin}</version>
                 <configuration>
-                    <assemblyArtifact>
-                         <groupId>io.openliberty</groupId>
-                         <artifactId>openliberty-runtime</artifactId>
-                         <version>RELEASE</version>
-                        <type>zip</type>
-                    </assemblyArtifact>
-                    <configFile>src/main/liberty/config/server.xml</configFile>
-                    <packageFile>${package.file}</packageFile>
-                    <include>${packaging.type}</include>
                     <!-- tag::bootstrap[] -->
                     <bootstrapProperties>
                         <default.http.port>${testServerHttpPort}</default.http.port>
@@ -138,63 +102,23 @@
                     </bootstrapProperties>
                     <!-- end::bootstrap[] -->
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>install-apps</id>
-                        <configuration>
-                            <looseApplication>true</looseApplication>
-                            <stripVersion>true</stripVersion>
-                            <installAppPackages>project</installAppPackages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>package-app</id>
-                        <configuration>
-                            <outputDirectory>target/wlp-package</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <!-- Plugin to run functional tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <id>integration-test</id>
-                        <goals>
-                            <goal>integration-test</goal>
-                        </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/it/**/*.java</include>
-                            </includes>
-                            <!-- tag::testsysprops[] -->
-                            <systemPropertyVariables>
-                                <liberty.test.port>${testServerHttpPort}
-                                </liberty.test.port>
-                                <war.name>${warContext}</war.name>
-                            </systemPropertyVariables>
-                            <!-- end::testsysprops[] -->
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>verify-results</id>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <summaryFile>
-                        ${project.build.directory}/test-reports/it/failsafe-summary.xml
-                    </summaryFile>
-                    <reportsDirectory>
-                        ${project.build.directory}/test-reports/it
-                    </reportsDirectory>
-                </configuration>
+                <version>${version.maven-failsafe-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.maven-war-plugin}</version>
+            </plugin>
+            <!-- Plugin to run unit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${version.maven-surefire-plugin}</version>
             </plugin>
         </plugins>
     </build>
