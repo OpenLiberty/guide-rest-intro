@@ -65,17 +65,14 @@ goal to build the application and deploy it to Open Liberty:
 mvn package liberty:start
 ```
 
+Check out the service at the
+http://localhost:9080/LibertyProject/System/properties[^] URL. 
+
 After you are done checking out the application, stop the Open Liberty server:
 
 ```
 mvn liberty:stop
 ```
-
-Check out the service at the
-http://localhost:9080/LibertyProject/System/properties[^] URL. 
-
-[role=command]
-include::{common-includes}/trywhatyoubuild-end.adoc[]
 
 == Creating a JAX-RS application
 
