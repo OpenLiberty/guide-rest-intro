@@ -108,6 +108,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${version.maven-failsafe-plugin}</version>
+                <configuration>
+                    <!-- tag::testsysprops[] -->
+                    <systemPropertyVariables>
+                        <liberty.test.port>${testServerHttpPort}
+                        </liberty.test.port>
+                        <war.name>${warContext}</war.name>
+                    </systemPropertyVariables>
+                    <!-- end::testsysprops[] -->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
