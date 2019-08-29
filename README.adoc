@@ -54,7 +54,22 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
-include::{common-includes}/trywhatyoubuild-beg.adoc[]
+=== Try what you'll build
+
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
+
+To try out the application, first go to the `finish` directory and run the following Maven 
+goal to build the application and deploy it to Open Liberty:
+[role='command']
+```
+mvn package liberty:start
+```
+
+After you are done checking out the application, stop the Open Liberty server:
+
+```
+mvn liberty:stop
+```
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
@@ -65,6 +80,15 @@ include::{common-includes}/trywhatyoubuild-end.adoc[]
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
+
+Start Open Liberty in development mode, which starts the Open Liberty server and listens 
+for file changes:
+
+[role="command"]
+```
+mvn liberty:dev
+```
+
 
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
@@ -170,17 +194,17 @@ include::finish/pom.xml[]
 The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=bootstrap file=1]`<bootstrapProperties/>` section
 of the Maven [hotspot file=1]`pom.xml`.
 
-[role="command"]
-include::{common-includes}/mvnbuild.adoc[]
+== Building and running the application
+
+The Open Liberty server was already started at the begginning of the guide and all the 
+changes have been automatically picked up.
 
 Check out the service you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-When you are done checking out the services, stop the Open Liberty server by running the following command:
-[role="command"]
-```
-mvn liberty:stop-server
-```
+When you are done checking out the services, stop the Open Liberty server simply press `CTRL+C` 
+in the shell session where you ran development mode, or run the `liberty:stop` goal from 
+the `start` directory in another shell session:
 
 == Testing the service
 
@@ -241,22 +265,8 @@ for both JVMs is the same. You could write additional assertions to check for mo
 
 === Running the tests
 
-If the server is still running from the previous steps, stop it using the Maven `liberty:stop-server` goal from command line in the start directory:
-[role="command"]
-```
-mvn liberty:stop-server
-```
-
-To rebuild, run the tests, and see that the test passes, run the Maven `install` command: 
-
-[role='command']
-```
-mvn install
-```
-
-The Maven
-build takes a little longer than before the test existed, but expect to see the following information
-in the output:
+Since we started Open Liberty in developer mode at the start of the guide, simply press
+`enter` to run the tests. You will see the following output:
 
 [source,role="no_copy"]
 ----
