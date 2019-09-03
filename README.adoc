@@ -216,14 +216,14 @@ does the latter.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `EndpointTest` class.#
-`src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
+#Create the `EndpointIT` class.#
+`src/test/java/it/io/openliberty/guides/rest/EndpointIT.java`
 ----
 
-EndpointTest.java
+EndpointIT.java
 [source, Java, linenums, role="code_column hide_tags=comment"]
 ----
-include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[]
+include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointIT.java[]
 ----
 
 This test class has more lines of code than the resource implementation. This situation is common.
@@ -270,8 +270,8 @@ Since we started Open Liberty in developer mode at the start of the guide, simpl
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-Running it.io.openliberty.guides.rest.EndpointTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.884 sec - in it.io.openliberty.guides.rest.EndpointTest
+Running it.io.openliberty.guides.rest.EndpointIT
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.884 sec - in it.io.openliberty.guides.rest.EndpointIT
 
 Results :
 

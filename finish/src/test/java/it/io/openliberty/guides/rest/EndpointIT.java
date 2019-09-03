@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Test;
 
-public class EndpointTest {
+public class EndpointIT {
     
     private static final Jsonb jsonb = JsonbBuilder.create();
 
