@@ -193,7 +193,7 @@ of the Maven [hotspot file=1]`pom.xml`.
 
 == Building and running the application
 
-The Open Liberty server was already started at the begginning of the guide and all the 
+The Open Liberty server was already started at the beginning of the guide and all the 
 changes have been automatically picked up.
 
 Check out the service you created at the
