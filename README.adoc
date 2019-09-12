@@ -182,12 +182,6 @@ the Maven [hotspot file=2]`bootstrap.properties` file. This is specified in the 
 . Configures the server to run the produced Web application on a context root specified in the 
 [hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
-pom.xml
-[source,xml,linenums,role="code_column"]
-----
-include::finish/pom.xml[]
-----
-
 bootstrap.properties
 [source,properties,linenums,role="code_column"]
 ----
