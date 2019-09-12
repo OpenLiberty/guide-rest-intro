@@ -178,9 +178,9 @@ The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 . Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
-. Configures the server to run the produced Web application on a context root specified in the Maven
-[hotspot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
+the Maven [hotspot file=2]`bootstrap.properties` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
+. Configures the server to run the produced Web application on a context root specified in the 
+[hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -188,8 +188,13 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=bootstrap file=1]`<bootstrapProperties/>` section
-of the Maven [hotspot file=1]`pom.xml`.
+bootstrap.properties
+[source,properties,linenums,role="code_column"]
+----
+include::finish/src/main/liberty/config/bootstrap.properties[]
+----
+
+The variables being used in the [hotspot file=0]`server.xml` file are provided by the properties set in the [hotspot file=1]`bootstrap.properties` file.
 
 == Building and running the application
 
@@ -235,13 +240,16 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
+bootstrap.properties
+[source,properties,linenums,role="code_column"]
+----
+include::finish/src/main/liberty/config/bootstrap.properties[]
+----
+
 The test code needs to know some information about the application in order to make requests. The server
 port and the application context root are key, and are dictated by the server configuration. While this
-information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=1]`pom.xml`
-file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=appname file=1]`<app.name/>`, [hotspot=httpport file=1]`<testServerHttpPort/>` and [hotspot=httpsport file=1]`<testServerHttpsPort/>` elements are provided in the file.
-
-These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in
-the [hotspot file=1]`pom.xml` file.
+information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=2]`bootstrap.properties`
+file. Refer to the [hotspot file=2]`bootstrap.properties` file to see how the application information such as the [hotspot=appname file=2]`app.context.root`, [hotspot=httpport file=2]`default.http.port` and [hotspot=httpsport file=2]`default.https.port` elements are provided in the file.
 
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=systemProperties file=0]`getProperty` method
 to get the application details.
