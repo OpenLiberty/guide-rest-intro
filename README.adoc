@@ -178,7 +178,7 @@ The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 . Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot file=2]`bootstrap.properties` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
+the Maven [hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
 . Configures the server to run the produced Web application on a context root specified in the 
 [hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
