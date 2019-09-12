@@ -198,15 +198,12 @@ The variables being used in the [hotspot file=0]`server.xml` file are provided b
 
 == Building and running the application
 
-The Open Liberty server was already started at the begginning of the guide and all the 
+The Open Liberty server was already started in developer mode at the begginning of the guide and all the 
 changes have been automatically picked up.
 
 Check out the service you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-When you are done checking out the services, stop the Open Liberty server simply press `CTRL+C` 
-in the shell session where you ran development mode, or run the `liberty:stop` goal from 
-the `start` directory in another shell session:
 
 == Testing the service
 
@@ -288,6 +285,11 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
+
+When you are done checking out the service, stop the Open Liberty server simply press `CTRL+C` 
+in the shell session where you ran development mode, or run the `liberty:stop` goal from 
+the `start` directory in another shell session.
+
 
 == Great work! You're done!
 
