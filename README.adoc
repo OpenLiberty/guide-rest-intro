@@ -62,13 +62,13 @@ To try out the application, first go to the `finish` directory and run the follo
 goal to build the application and deploy it to Open Liberty:
 [role='command']
 ```
-mvn package liberty:start
+mvn package liberty:dev
 ```
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-After you are done checking out the application, stop the Open Liberty server:
+After you are done checking out the application, stop the Open Liberty server simply press CTRL+C in the shell session or run following in another shell session:
 
 ```
 mvn liberty:stop
