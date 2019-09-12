@@ -75,7 +75,7 @@
                     <assemblyArtifact>
                         <groupId>io.openliberty</groupId>
                         <artifactId>openliberty-kernel</artifactId>
-                        <version>[19.0.0.4,)</version>
+                        <version>[19.0.0.8,)</version>
                         <type>zip</type>
                     </assemblyArtifact>
                </configuration>
