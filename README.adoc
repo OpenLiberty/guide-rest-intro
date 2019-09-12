@@ -198,7 +198,7 @@ The variables being used in the [hotspot file=0]`server.xml` file are provided b
 
 == Building and running the application
 
-The Open Liberty server was already started in developer mode at the beinning of the guide and all the 
+The Open Liberty server was already started in developer mode at the beginning of the guide and all the 
 changes have been automatically picked up.
 
 Check out the service you created at the
