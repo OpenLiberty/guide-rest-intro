@@ -94,7 +94,7 @@ common path. You can think of the JAX-RS application as a wrapper for all of you
 
 [role="code_command hotspot" ,subs="quotes"]
 ----
-#Create the `SystemApplication` class.#
+#Replace the `SystemApplication` class.#
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
@@ -164,7 +164,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the server configuration file.#
+#Replace the server configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
