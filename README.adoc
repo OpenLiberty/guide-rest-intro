@@ -62,13 +62,13 @@ To try out the application, first go to the `finish` directory and run the follo
 goal to build the application and deploy it to Open Liberty:
 [role='command']
 ```
-mvn package liberty:start
+mvn package liberty:dev
 ```
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-After you are done checking out the application, stop the Open Liberty server:
+After you are done checking out the application, stop the Open Liberty server simply press CTRL+C in the shell session or run following in another shell session:
 
 ```
 mvn liberty:stop
@@ -94,7 +94,7 @@ common path. You can think of the JAX-RS application as a wrapper for all of you
 
 [role="code_command hotspot" ,subs="quotes"]
 ----
-#Create the `SystemApplication` class.#
+#Replace the `SystemApplication` class.#
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
@@ -164,7 +164,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the server configuration file.#
+#Replace the server configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
@@ -178,30 +178,26 @@ The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 . Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
-. Configures the server to run the produced Web application on a context root specified in the Maven
-[hotspot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
+the Maven [hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
+. Configures the server to run the produced Web application on a context root specified in the 
+[hotspot file=1]`bootstrap.properties` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
-pom.xml
-[source,xml,linenums,role="code_column"]
+bootstrap.properties
+[source,properties,linenums,role="code_column"]
 ----
-include::finish/pom.xml[]
+include::finish/src/main/liberty/config/bootstrap.properties[]
 ----
 
-The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=bootstrap file=1]`<bootstrapProperties/>` section
-of the Maven [hotspot file=1]`pom.xml`.
+The variables being used in the [hotspot file=0]`server.xml` file are provided by the properties set in the [hotspot file=1]`bootstrap.properties` file.
 
 == Building and running the application
 
-The Open Liberty server was already started at the beginning of the guide and all the 
+The Open Liberty server was already started in developer mode at the beginning of the guide and all the 
 changes have been automatically picked up.
 
 Check out the service you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-When you are done checking out the services, stop the Open Liberty server simply press `CTRL+C` 
-in the shell session where you ran development mode, or run the `liberty:stop` goal from 
-the `start` directory in another shell session:
 
 == Testing the service
 
@@ -235,13 +231,16 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
+bootstrap.properties
+[source,properties,linenums,role="code_column"]
+----
+include::finish/src/main/liberty/config/bootstrap.properties[]
+----
+
 The test code needs to know some information about the application in order to make requests. The server
 port and the application context root are key, and are dictated by the server configuration. While this
-information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=1]`pom.xml`
-file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=appname file=1]`<app.name/>`, [hotspot=httpport file=1]`<testServerHttpPort/>` and [hotspot=httpsport file=1]`<testServerHttpsPort/>` elements are provided in the file.
-
-These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in
-the [hotspot file=1]`pom.xml` file.
+information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=2]`bootstrap.properties`
+file. Refer to the [hotspot file=2]`bootstrap.properties` file to see how the application information such as the [hotspot=appname file=2]`app.context.root`, [hotspot=httpport file=2]`default.http.port` and [hotspot=httpsport file=2]`default.https.port` elements are provided in the file.
 
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=systemProperties file=0]`getProperty` method
 to get the application details.
@@ -280,6 +279,11 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
+
+When you are done checking out the service, stop the Open Liberty server simply press `CTRL+C` 
+in the shell session where you ran development mode, or run the `liberty:stop` goal from 
+the `start` directory in another shell session.
+
 
 == Great work! You're done!
 
