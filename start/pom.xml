@@ -16,7 +16,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Plugin versions -->
-        <version.liberty-plugin>3.0-M2</version.liberty-plugin>
         <version.maven-failsafe-plugin>2.22.2</version.maven-failsafe-plugin>
         <version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
         <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
@@ -70,7 +69,6 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>${version.liberty-plugin}</version>
                 <configuration>
                     <assemblyArtifact>
                         <groupId>io.openliberty</groupId>
