@@ -69,14 +69,6 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <configuration>
-                    <assemblyArtifact>
-                        <groupId>io.openliberty</groupId>
-                        <artifactId>openliberty-kernel</artifactId>
-                        <version>[19.0.0.8,)</version>
-                        <type>zip</type>
-                    </assemblyArtifact>
-               </configuration>
             </plugin>
             <!-- Plugin to run functional tests -->
             <plugin>
