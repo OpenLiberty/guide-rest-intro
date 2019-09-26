@@ -62,7 +62,7 @@ To try out the application, first go to the `finish` directory and run the follo
 goal to build the application and deploy it to Open Liberty:
 [role='command']
 ```
-mvn package liberty:dev
+mvn liberty:dev
 ```
 
 Check out the service at the
