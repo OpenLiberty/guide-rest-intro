@@ -68,7 +68,7 @@ mvn package liberty:dev
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-After you are done checking out the application, stop the Open Liberty server by simply pressing `CTRL+C` in the shell session.
+After you are done checking out the application, stop the Open Liberty server by simply typing `q` in the shell session and then press the `enter/return` key.
 
 == Creating a JAX-RS application
 
@@ -276,8 +276,8 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
 
-When you are done checking out the service, stop the Open Liberty server by simply pressing `CTRL+C` 
-in the shell session where you ran development mode.
+When you are done checking out the service, stop the Open Liberty server by simply typing `q`
+in the shell session where you ran development mode and then press the `enter/return` key.
 
 
 == Great work! You're done!
