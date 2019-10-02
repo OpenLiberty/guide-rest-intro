@@ -48,12 +48,12 @@
             <version>3.2.6</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.eclipse</groupId>
             <artifactId>yasson</artifactId>
             <version>1.0.4</version>
             <scope>test</scope>
-		</dependency>
+        </dependency>
         <!-- For JDK 11 Support -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
