@@ -22,7 +22,7 @@
     </properties>
 
     <dependencies>
-        <!-- Open Liberty features -->
+        <!-- Provided dependencies -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-web-api</artifactId>
@@ -54,7 +54,7 @@
             <version>1.0.4</version>
             <scope>test</scope>
         </dependency>
-        <!-- For JDK 11 Support -->
+        <!-- Support for JDK 9 and above -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
