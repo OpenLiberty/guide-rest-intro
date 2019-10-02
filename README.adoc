@@ -83,9 +83,9 @@ path specified in the [hotspot=systemApplication]`SystemApplication` class. The 
 value that indicates the path within the WAR that the JAX-RS application accepts requests from.
 
 SystemApplication.java
-[source, Java, linenums, role='code_column hide_tags=comment']
+[source, Java, linenums, role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
+include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment;]
 ----
 
 == Creating the JAX-RS resource
@@ -126,15 +126,15 @@ is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to
 to JSON data in the HTTP response.
 
 PropertiesResource.java
-[source,java,linenums,role='code_column hide_tags=comment']
+[source,java,linenums,role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[]
+include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[tags=**;!comment;]
 ----
 
 SystemApplication.java
-[source,java,linenums,role='code_column hide_tags=comment']
+[source,java,linenums,role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
+include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[tags=**;!comment;]
 ----
 
 == Configuring the server
@@ -200,9 +200,9 @@ does the latter.
 ----
 
 EndpointTest.java
-[source, Java, linenums, role="code_column hide_tags=comment"]
+[source, Java, linenums, role="code_column"]
 ----
-include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[]
+include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[tags=**;!copyright;]
 ----
 
 This test class has more lines of code than the resource implementation. This situation is common.
