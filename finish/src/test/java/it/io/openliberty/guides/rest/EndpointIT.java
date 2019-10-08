@@ -34,8 +34,8 @@ public class EndpointIT {
     // end::test[]
     public void testGetProperties() {
         // tag::systemProperties[]
-        String port = System.getProperty("http.port", "9080");
-        String context = System.getProperty("context.root", "LibertyProject");
+        String port = System.getProperty("http.port");
+        String context = System.getProperty("context.root");
         // end::systemProperties[]
         String url = "http://localhost:" + port + "/" + context + "/";
 
