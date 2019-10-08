@@ -34,10 +34,10 @@ public class EndpointIT {
     // end::test[]
     public void testGetProperties() {
         // tag::systemProperties[]
-        String port = System.getProperty("liberty.test.port", "9080");
-        String war = System.getProperty("war.name", "LibertyProject");
+        String port = System.getProperty("default.http.port", "9080");
+        String context = System.getProperty("app.context.root", "LibertyProject");
         // end::systemProperties[]
-        String url = "http://localhost:" + port + "/" + war + "/";
+        String url = "http://localhost:" + port + "/" + context + "/";
 
         // tag::clientSetup[]
         Client client = ClientBuilder.newClient();
