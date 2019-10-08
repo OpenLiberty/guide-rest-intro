@@ -82,8 +82,8 @@
                 <version>${version.maven-failsafe-plugin}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <default.http.port>${liberty.var.default.http.port}</default.http.port>
-                        <app.context.root>${liberty.var.app.context.root}</app.context.root>
+                        <http.port>${liberty.var.default.http.port}</http.port>
+                        <context.root>${liberty.var.app.context.root}</context.root>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
