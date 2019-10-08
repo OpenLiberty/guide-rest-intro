@@ -87,10 +87,12 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${version.maven-failsafe-plugin}</version>
                 <configuration>
+                    <!-- tag::testsysprops[] -->
                     <systemPropertyVariables>
                         <http.port>${liberty.var.default.http.port}</http.port>
                         <context.root>${liberty.var.app.context.root}</context.root>
                     </systemPropertyVariables>
+                    <!-- end::testsysprops[] -->
                 </configuration>
             </plugin>
             <plugin>
