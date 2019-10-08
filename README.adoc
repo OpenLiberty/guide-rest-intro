@@ -185,7 +185,7 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The variables being used in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file are provided by the properties set in the Maven [hotspot=portNumbers hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formated as `liberty.var.${variableName}`.
+The variables being used in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file are provided by the properties set in the Maven [hotspot=defaultHttpsPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formated as `liberty.var.variableName`.
 
 == Building and running the application
 
