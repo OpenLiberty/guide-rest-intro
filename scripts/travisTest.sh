@@ -15,5 +15,5 @@ if [ $ERROR -ne 0 ]; then
     mvn liberty:stop
     cat out.log
     echo "Test Failed!"
-    exit 1
+    #exit 1
 fi
