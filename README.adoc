@@ -62,14 +62,20 @@ To try out the application, first go to the `finish` directory and run the follo
 goal to build the application and deploy it to Open Liberty:
 [role='command']
 ```
-mvn liberty:dev
+mvn liberty:run
 ```
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-After you are done checking out the application, stop the Open Liberty server by simply type `q` in the shell session where
-you ran the server and then press the `enter/return` key.
+After you are done checking out the application, simply press `CTRL+C` in the shell session where
+you ran the server, or run the `liberty:stop` goal from the `finish` directory in
+another shell session:
+
+[role='command']
+```
+mvn liberty:stop
+```
 
 == Creating a JAX-RS application
 
