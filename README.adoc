@@ -195,7 +195,7 @@ The variables being used in the [hotspot=httpEndpoint hotspot=webApplication fil
 
 == Building and running the application
 
-The Open Liberty server was already started in developer mode at the beginning of the guide and all the 
+The Open Liberty server was already started in development mode at the beginning of the guide and all the 
 changes have been automatically picked up.
 
 Check out the service you created at the
@@ -258,7 +258,7 @@ for both JVMs is the same. You could write additional assertions to check for mo
 
 === Running the tests
 
-Since we started Open Liberty in developer mode at the start of the guide, simply press
+Since we started Open Liberty in development mode at the start of the guide, simply press
 `enter/return` key to run the tests. You will see the following output:
 
 [source,role="no_copy"]
@@ -277,7 +277,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
 
-When you are done checking out the service, stop the Open Liberty server by simply type `q` in the shell session where
+When you are done checking out the service, exit development mode by simply typing `q` in the shell session where
 you ran the server and then press the `enter/return` key.
 
 
