@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Test;
 
-public class EndpointTest {
+public class EndpointIT {
     
     private static final Jsonb jsonb = JsonbBuilder.create();
 
@@ -34,10 +34,10 @@ public class EndpointTest {
     // end::test[]
     public void testGetProperties() {
         // tag::systemProperties[]
-        String port = System.getProperty("liberty.test.port");
-        String war = System.getProperty("war.name");
+        String port = System.getProperty("http.port");
+        String context = System.getProperty("context.root");
         // end::systemProperties[]
-        String url = "http://localhost:" + port + "/" + war + "/";
+        String url = "http://localhost:" + port + "/" + context + "/";
 
         // tag::clientSetup[]
         Client client = ClientBuilder.newClient();
