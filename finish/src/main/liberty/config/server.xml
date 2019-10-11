@@ -12,6 +12,6 @@
   <!-- end::httpEndpoint[] -->
   
   <!-- tag::webApplication[] -->
-  <webApplication location="rest.war" contextRoot="${app.context.root}"/>
+  <webApplication location="guide-rest-intro.war" contextRoot="${app.context.root}"/>
   <!-- end::webApplication[] -->
 </server>
