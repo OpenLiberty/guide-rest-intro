@@ -13,7 +13,7 @@
 :page-guide-category: microprofile
 :page-essential: true
 :page-essential-order: 1
-:page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+:page-description: Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
 :page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
@@ -276,7 +276,7 @@ assertion to a constant value that doesn't match the `os.name` system property.
 
 == Great work! You're done!
 
-You developed a REST service in Open Liberty by using JAX-RS and JSON-P.
+You developed a REST service in Open Liberty by using JAX-RS and JSON-B.
 
 == Related Links
 
