@@ -15,8 +15,8 @@ ERROR=`grep ERROR out.log | wc -l`
 if [ $ERROR -ne 0 ]; then
     mvn liberty:stop
     cat start.log
-    #ls -Rl target/liberty/wlp/usr/servers/defaultServer
-    #cat target/liberty/wlp/usr/servers/defaultServer/logs/messages.log 
+    ls -Rl target/liberty/wlp/usr/servers/defaultServer
+    cat target/liberty/wlp/usr/servers/defaultServer/logs/messages.log 
     cat out.log
     echo "Test Failed!"
     #exit 1
