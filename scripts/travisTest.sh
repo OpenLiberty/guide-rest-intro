@@ -7,9 +7,11 @@ set -euxo pipefail
 ##
 ##############################################################################
 
+mv ~/.m2/settings.xml ~/.m2/settings.xml.gri
 mvn -q clean package liberty:create liberty:install-feature liberty:deploy
 mvn liberty:start > start.log
 mvn failsafe:integration-test liberty:stop > out.log
+mv ~/.m2/settings.xml.gri ~/.m2/settings.xml
 ERROR=`grep ERROR out.log | wc -l`
 if [ $ERROR -ne 0 ]; then
     mvn liberty:stop
