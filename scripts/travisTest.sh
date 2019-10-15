@@ -14,9 +14,10 @@ mvn failsafe:integration-test liberty:stop > out.log
 ERROR=`grep ERROR out.log | wc -l`
 if [ $ERROR -ne 0 ]; then
     mvn liberty:stop
-    tail -50 create.log
+    tail 50 create.log
     cat start.log
-    tail target/liberty/wlp/usr/servers/defaultServer/logs/messages.log 
+    ls -Rl target/liberty/wlp/usr/servers/defaultServer
+    cat target/liberty/wlp/usr/servers/defaultServer/logs/messages.log 
     cat out.log
     echo "Test Failed!"
     #exit 1
