@@ -13,7 +13,7 @@
 :page-guide-category: microprofile
 :page-essential: true
 :page-essential-order: 1
-:page-description: Learn how to create a REST service with JAX-RS, JSON-P, and Open Liberty.
+:page-description: Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
 :page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
@@ -43,7 +43,7 @@ each property is a field in a JSON object like this:
 }
 ----
 
-When you create a new REST application, the design of the API is important. The JAX-RS APIs could be
+When you create a new REST application, the design of the API is important. The JAX-RS APIs can be
 used to create JSON-RPC, or XML-RPC APIs, but it wouldn't be a RESTful service. A good RESTful service
 is designed around the resources that are exposed, and on how to create, read, update, and delete the
 resources.
@@ -54,17 +54,41 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
-include::{common-includes}/trywhatyoubuild-beg.adoc[]
+=== Try what you'll build
+
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
+
+To try out the application, first go to the `finish` directory and run the following Maven 
+goal to build the application and deploy it to Open Liberty:
+[role='command']
+```
+mvn liberty:run
+```
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-[role=command]
-include::{common-includes}/trywhatyoubuild-end.adoc[]
+After you are done checking out the application, stop the Open Liberty server by pressing `CTRL+C`
+in the shell session where you ran the server. Alternatively, you can run the `liberty:stop` goal 
+from the `finish` directory in another shell session:
+
+[role='command']
+```
+mvn liberty:stop
+```
 
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
+
+Start Open Liberty in development mode, which starts the Open Liberty server and listens 
+for file changes:
+
+[role="command"]
+```
+mvn liberty:dev
+```
+
 
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
@@ -73,7 +97,7 @@ common path. You can think of the JAX-RS application as a wrapper for all of you
 
 [role="code_command hotspot" ,subs="quotes"]
 ----
-#Create the `SystemApplication` class.#
+#Replace the `SystemApplication` class.#
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
@@ -109,19 +133,19 @@ the [hotspot=path file=0]`@Path` annotation in this class indicates that the res
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods on the class. The method to call is determined
-by the annotations specified on the methods. In the application you are building, an HTTP `GET` request
+by the annotations that are specified on the methods. In the application you are building, an HTTP `GET` request
 to the `System/properties` path results in the system properties being returned.
 
 The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
 method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The
 value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
-response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because in the event of a spelling error, a compile failure occurs.
+response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
 (JSON-B) and JAX-B. 
 
-The method body returns the result of `System.getProperties()` which is of type `java.util.Properties`. Since the method 
+The method body returns the result of `System.getProperties()` that is of type `java.util.Properties`. Since the method 
 is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to automatically convert the returned object
 to JSON data in the HTTP response.
 
@@ -143,7 +167,7 @@ To get the service running, the Liberty server needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the server configuration file.#
+#Replace the server configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
@@ -157,9 +181,9 @@ The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 . Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the syntax `${variableName}`.
-. Configures the server to run the produced Web application on a context root specified in the Maven
-[hotspot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
+the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the `${variableName}` syntax.
+. Configures the server to run the produced web application on a context root specified in the 
+[hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -167,27 +191,23 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The variables being used in the [hotspot file=0]`server.xml` file are provided by the [hotspot=bootstrap file=1]`<bootstrapProperties/>` section
-of the Maven [hotspot file=1]`pom.xml`.
+The variables that are being used in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file are provided by the properties set in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
 
-[role="command"]
-include::{common-includes}/mvnbuild.adoc[]
+== Building and running the application
 
-Check out the service you created at the
+The Open Liberty server was started in development mode at the beginning of the guide and all the 
+changes were automatically picked up.
+
+Check out the service that you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-When you are done checking out the services, stop the Open Liberty server by running the following command:
-[role="command"]
-```
-mvn liberty:stop-server
-```
 
 == Testing the service
 
-You could test this service manually by starting a server and pointing a web browser at the
+You can test this service manually by starting a server and pointing a web browser at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. Automated tests are a much better
-approach because they will trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client
-API provide a very simple environment to test the application.
+approach because they trigger a failure if a change introduces a bug. JUnit and the JAX-RS Client
+API provide a simple environment to test the application.
 
 You can write tests for the individual units of code outside of a running application server, or they
 can be written to call the application server directly. In this example, you will create a test that
@@ -195,14 +215,14 @@ does the latter.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `EndpointTest` class.#
-`src/test/java/it/io/openliberty/guides/rest/EndpointTest.java`
+#Create the `EndpointIT` class.#
+`src/test/java/it/io/openliberty/guides/rest/EndpointIT.java`
 ----
 
-EndpointTest.java
+EndpointIT.java
 [source, Java, linenums, role="code_column hide_tags=comment"]
 ----
-include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointTest.java[]
+include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointIT.java[]
 ----
 
 This test class has more lines of code than the resource implementation. This situation is common.
@@ -214,57 +234,39 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The test code needs to know some information about the application in order to make requests. The server
-port and the application context root are key, and are dictated by the server configuration. While this
-information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot file=1]`pom.xml`
-file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=appname file=1]`<app.name/>`, [hotspot=httpport file=1]`<testServerHttpPort/>` and [hotspot=httpsport file=1]`<testServerHttpsPort/>` elements are provided in the file.
+The test code needs to know some information about the application to make requests. The server port and the application context root are key, and are dictated by the server configuration. While this information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=defaultHttpPort file=1]`default.http.port`, [hotspot=defaultHttpsPort file=1]`default.https.port` and [hotspot=appContextRoot file=1]`app.context.root` elements are provided in the file.
 
-These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in
-the [hotspot file=1]`pom.xml` file.
+
+These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in the [hotspot file=1]`pom.xml` file.
 
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=systemProperties file=0]`getProperty` method
 to get the application details.
 
 To call the JAX-RS service using the JAX-RS client, first create a `WebTarget` object by calling
-the [hotspot=target file=0]`target` method providing the URL. To cause the HTTP request to occur [hotspot=requestget file=0]`request().get()` 
-is invoked on the `WebTarget`. The [hotspot=requestget file=0]`get` method
+the [hotspot=target file=0]`target` method that provides the URL. To cause the HTTP request to occur, the [hotspot=requestget file=0]`request().get()` method
+is called on the `WebTarget` object. The [hotspot=requestget file=0]`get` method
 call is a synchronous call that blocks until a response is received. This call returns a [hotspot=requestget file=0]`Response`
 object, which can be inspected to determine whether the request was successful.
 
-The first thing to check is that a `200` response was received. The JUnit [hotspot=assertequals file=0]`assertEquals` method can
-be used for this.
+The first thing to check is that a `200` response was received. The JUnit [hotspot=assertequals file=0]`assertEquals` method can be used for this check.
 
 Check the response body to ensure it returned the right information. Since the client and the server
 are running on the same machine, it is reasonable to expect that the system properties for the local
-and remote JVM would be the same. In this case, an assertion [hotspot=assertosname file=0]`assertEquals` is made that the `os.name` system property
-for both JVMs is the same. You could write additional assertions to check for more values.
+and remote JVM would be the same. In this case, an [hotspot=assertosname file=0]`assertEquals` assertion is made so that the `os.name` system property
+for both JVMs is the same. You can write additional assertions to check for more values.
 
 === Running the tests
 
-If the server is still running from the previous steps, stop it using the Maven `liberty:stop-server` goal from command line in the start directory:
-[role="command"]
-```
-mvn liberty:stop-server
-```
-
-To rebuild, run the tests, and see that the test passes, run the Maven `install` command: 
-
-[role='command']
-```
-mvn install
-```
-
-The Maven
-build takes a little longer than before the test existed, but expect to see the following information
-in the output:
+Since you started Open Liberty in development mode at the start of the guide, press
+`enter/return` key to run the tests. You will see the following output:
 
 [source,role="no_copy"]
 ----
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-Running it.io.openliberty.guides.rest.EndpointTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.884 sec - in it.io.openliberty.guides.rest.EndpointTest
+Running it.io.openliberty.guides.rest.EndpointIT
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.884 sec - in it.io.openliberty.guides.rest.EndpointIT
 
 Results :
 
@@ -274,9 +276,13 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
 
+When you are done checking out the service, exit development mode by typing `q` in the shell session where
+you ran the server and then pressing the `enter/return` key.
+
+
 == Great work! You're done!
 
-You developed a REST service in Open Liberty by using JAX-RS and JSON-P.
+You developed a REST service in Open Liberty by using JAX-RS and JSON-B.
 
 == Related Links
 
