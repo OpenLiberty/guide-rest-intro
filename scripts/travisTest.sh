@@ -9,6 +9,7 @@ set -euxo pipefail
 
 mvn -q clean package liberty:create liberty:install-feature liberty:deploy
 mvn liberty:start > start.log
+sleep 10
 mvn failsafe:integration-test liberty:stop > out.log
 ERROR=`grep ERROR out.log | wc -l`
 if [ $ERROR -ne 0 ]; then
