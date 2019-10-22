@@ -18,5 +18,5 @@ if [ $ERROR -ne 0 ]; then
     cat target/liberty/wlp/usr/servers/defaultServer/logs/messages.log 
     cat out.log
     echo "Test Failed!"
-    #exit 1
+    exit 1
 fi
