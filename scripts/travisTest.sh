@@ -20,3 +20,5 @@ if [ $ERROR -ne 0 ]; then
     echo "Test Failed!"
     exit 1
 fi
+ecbo "Test Success!"
+exit 0
