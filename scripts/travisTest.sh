@@ -19,3 +19,5 @@ if [ $ERROR -ne 0 ]; then
     echo "Test Failed!"
     exit 1
 fi
+cat out.log
+echo "Test passed!"
