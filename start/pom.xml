@@ -56,7 +56,7 @@
         <dependency>
             <groupId>org.eclipse</groupId>
             <artifactId>yasson</artifactId>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
             <scope>test</scope>
         </dependency>
         <!-- Support for JDK 9 and above -->
