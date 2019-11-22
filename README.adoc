@@ -180,9 +180,7 @@ include::finish/src/main/liberty/config/server.xml[]
 The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property, to act as a value placeholder. 
-
-Variables are referenced using the `${variableName}` syntax.
+. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property, to act as a value placeholder. Variables are referenced using the `${variableName}` syntax.
 . Configures the server to run the produced web application on a context root, specified in the [hotspot=webApplication file=0]`<webApplication/>` element. The produced web application is essentially the RESTful web service we attempt to create in this guide, which entails all the necessary configuration and utilizes Maven's project object model `pom.xml` file to manage the project's build. The [hotspot=appContextRoot file=1]`</appContextRoot>` is fed through in the `pom.xml` as property to also act as a value placeholder. 
 
 pom.xml
