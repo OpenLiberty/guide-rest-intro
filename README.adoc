@@ -180,10 +180,10 @@ include::finish/src/main/liberty/config/server.xml[]
 The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-. Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the `${variableName}` syntax.
-. Configures the server to run the produced web application on a context root specified in the 
-[hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
+. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property, to act as a value placeholder. 
+
+Variables are referenced using the `${variableName}` syntax.
+. Configures the server to run the produced web application on a context root, specified in the [hotspot=webApplication file=0]`<webApplication/>` element. The produced web application is essentially the RESTful web service we attempt to create in this guide, which entails all the necessary configuration and utilizes Maven's project object model `pom.xml` file to manage the project's build. The [hotspot=appContextRoot file=1]`</appContextRoot>` is fed through in the `pom.xml` as property to also act as a value placeholder. 
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -191,7 +191,11 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The variables that are being used in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file are provided by the properties set in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
+Ultimately, the server configuration is the only mandatory configuration file, and it's only requirement is that the root element is `</server>`, where optional configuration of files and parameters is based on user needs. 
+
+In our case, we need to parameterize the `server.xml` with the required variables to configure the RESTful web service that runs on the Open Liberty server. After declaring the configured variables in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file, they are then defined and passed through by the properties set in the [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. 
+
+The properties must be formatted as `liberty.var.variableName`.
 
 == Building and running the application
 
