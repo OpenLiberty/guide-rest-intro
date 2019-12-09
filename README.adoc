@@ -166,7 +166,7 @@ include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[
 To get the service running, the `server.xml` needs to be parameterized with the required variables to configure the RESTful web service that runs on the Liberty server. After declaring the configured variables in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file, they are then defined and passed through by the properties set in the [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
 
 Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
-[source,xml]
+[source.xml]
 ----
 include::finish/src/main/liberty/config/server.xml[]
 ----
@@ -179,11 +179,6 @@ The configuration does the following actions:
 
 The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
 of the Maven `pom.xml`:
-
-[source,xml,linenums,role="code_column"]
-----
-include::finish/pom.xml[]
-----
 
 include::{common-includes}/mvnbuild.adoc[]
 
