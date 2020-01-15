@@ -18,8 +18,8 @@
 :page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
-:page-seo-title: Creating a simple REST service 
-:page-seo-description: A tutorial on how to create a REST service in Open Liberty using JAX-RS and JSON-B
+:page-seo-title: Building a simple RESTful Java microservice using JAX-RS and JSON-B
+:page-seo-description: A getting started tutorial and an example on how to create a RESTful Java microservice in Open Liberty using the Java API for RESTful Web Services (JAX-RS) and JSON Binding (JSON-B).
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
 
