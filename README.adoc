@@ -163,9 +163,13 @@ include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[
 
 == Configuring the server
 
-To get the service running, the `server.xml` needs to be parameterized with the required variables to configure the RESTful web service that runs on the Liberty server. After declaring the configured variables in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file, they are then defined and passed through by the properties set in the [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
+To get the service running, the `server.xml` needs to be parameterized with the required variables to configure the RESTful web service that runs on the Liberty server. After declaring the configured variables in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file, they are then defined and passed through the properties set in the [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
 
+[role="code_command hotspot", subs="quotes"]
+----
 Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
+----
+
 server.xml
 [source,xml,linenums,role="code_column"]
 ----
@@ -175,8 +179,8 @@ include::finish/src/main/liberty/config/server.xml[]
 The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property, to act as a value placeholder. Variables are referenced using the `${variableName}` syntax.
-. Configures the server to run the produced web application on a context root, specified in the [hotspot=webApplication file=0]`<webApplication/>` element. The [hotspot=appContextRoot file=1]`</appContextRoot>` is fed through in the `pom.xml` as property to also act as a value placeholder. 
+. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property which acts as a value placeholder. Variables use the syntax`${variableName}`.
+. Configures the server to run the produced web application on a context root, specified in the [hotspot=webApplication file=0]`<webApplication/>` element. The [hotspot=appContextRoot file=1]`</appContextRoot>` is fed through the `pom.xml` as property to also act as a value placeholder. 
 
 The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
 of the Maven `pom.xml`:
@@ -228,7 +232,7 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The test code needs to know some information about the application in order to make requests. The server port and the application context root are key, and are dictated by the server configuration. While this information can be hardcoded, it is better to specify it in a single place like the pom.xml file. Refer to the the [hotspot file=1]`pom.xml` to see how the application information is provided in the file:
+The test code needs to know some information about the application in order to make requests. The server port and the application context root are key, and are dictated by the server configuration. While this information can be hardcoded, it is better to specify it in a single place like the pom.xml file. Refer to the the [hotspot file=1]`pom.xml` to see how the application information is provided in the file.
 
 These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in the [hotspot file=1]`pom.xml` file.
 
