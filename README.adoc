@@ -167,7 +167,8 @@ To get the service running, the `server.xml` needs to be parameterized with the 
 
 [role="code_command hotspot", subs="quotes"]
 ----
-Edit the `src/main/liberty/config/server.xml` file to update the placeholder text to be:
+#Edit the server configuration file.#
+`src/main/liberty/config/server.xml`
 ----
 
 server.xml
