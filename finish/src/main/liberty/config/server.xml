@@ -1,5 +1,4 @@
 <server description="Intro REST Guide Liberty server">
-
   <!-- tag::featureManager[] -->
   <featureManager>
       <feature>jaxrs-2.1</feature>

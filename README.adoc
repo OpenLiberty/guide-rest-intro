@@ -18,7 +18,8 @@
 :page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
-:repo-description: Visit the https://openliberty.io/guides/{projectid}.html[website] for the rendered version of the guide.
+:page-seo-title: Creating a simple REST service 
+:page-seo-description: A tutorial on how to create a REST service in Open Liberty using JAX-RS and JSON-B
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 = Creating a RESTful web service
 
