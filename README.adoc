@@ -181,7 +181,7 @@ include::finish/src/main/liberty/config/server.xml[]
 The configuration does the following actions:
 
 . Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property which acts as a value placeholder. Variables use the syntax`${variableName}`.
+. Configures the server to resolve the HTTP port numbers from variables, which is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. The `httpEndpoint` is then fed through the [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file as a property which acts as a value placeholder. Variables use the `${variableName}` syntax.
 . Configures the server to run the produced web application on a context root, specified in the [hotspot=webApplication file=0]`<webApplication/>` element. The [hotspot=appContextRoot file=1]`</appContextRoot>` is fed through the `pom.xml` as property to also act as a value placeholder. 
 
 The variables being used in the `server.xml` file are provided by the `bootstrapProperties` section
