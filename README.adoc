@@ -263,6 +263,8 @@ for both JVMs is the same. You can write additional assertions to check for more
 [role='command']
 include::{common-includes}/devmode-test.adoc[]
 
+You will see the following output:
+
 [source,role="no_copy"]
 ----
 -------------------------------------------------------
