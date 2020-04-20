@@ -28,6 +28,11 @@ NOTE: This repository contains the guide documentation source. To view the guide
 
 Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 
+
+// =================================================================================================
+// What you'll learn
+// =================================================================================================
+
 == What you'll learn
 
 You will learn how to build and test a simple REST service with JAX-RS and JSON-B, which will expose
@@ -55,41 +60,25 @@ return a `200 OK` response that contains all of the JVM's system properties.
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
 
-=== Try what you'll build
-
-The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
-
-To try out the application, first go to the `finish` directory and run the following Maven 
-goal to build the application and deploy it to Open Liberty:
 [role='command']
-```
-mvn liberty:run
-```
+include::{common-includes}/twyb-intro.adoc[]
 
 Check out the service at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
-After you are done checking out the application, stop the Open Liberty server by pressing `CTRL+C`
-in the shell session where you ran the server. Alternatively, you can run the `liberty:stop` goal 
-from the `finish` directory in another shell session:
-
 [role='command']
-```
-mvn liberty:stop
-```
+include::{common-includes}/twyb-end.adoc[]
+
+// =================================================================================================
+// Creating a JAX-RS application
+// =================================================================================================
 
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
 
-Start Open Liberty in development mode, which starts the Open Liberty server and listens 
-for file changes:
-
-[role="command"]
-```
-mvn liberty:dev
-```
-
+[role='command']
+include::{common-includes}/devmode-start.adoc[]
 
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
@@ -112,6 +101,11 @@ SystemApplication.java
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
+
+
+// =================================================================================================
+// Creating the JAX-RS resource
+// =================================================================================================
 
 == Creating the JAX-RS resource
 
@@ -162,6 +156,11 @@ SystemApplication.java
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
 
+
+// =================================================================================================
+// Configuring the server
+// =================================================================================================
+
 == Configuring the server
 
 To get the service running, the Liberty server needs to be correctly configured.
@@ -194,14 +193,19 @@ include::finish/pom.xml[]
 
 The variables that are being used in the [hotspot=httpEndpoint hotspot=webApplication file=0]`server.xml` file are provided by the properties set in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. The properties must be formatted as `liberty.var.variableName`.
 
-== Building and running the application
+// =================================================================================================
+// Running the application
+// =================================================================================================
 
-The Open Liberty server was started in development mode at the beginning of the guide and all the 
-changes were automatically picked up.
+[role='command']
+include::{common-includes}/devmode-build.adoc[]
 
 Check out the service that you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
+// =================================================================================================
+// Testing the service
+// =================================================================================================
 
 == Testing the service
 
@@ -256,10 +260,10 @@ are running on the same machine, it is reasonable to expect that the system prop
 and remote JVM would be the same. In this case, an [hotspot=assertosname file=0]`assertEquals` assertion is made so that the `os.name` system property
 for both JVMs is the same. You can write additional assertions to check for more values.
 
-=== Running the tests
+[role='command']
+include::{common-includes}/devmode-test.adoc[]
 
-Since you started Open Liberty in development mode at the start of the guide, press
-`enter/return` key to run the tests. You will see the following output:
+You will see the following output:
 
 [source,role="no_copy"]
 ----
@@ -277,8 +281,8 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 To see whether the tests detect a failure, add an assertion that you know fails, or change the existing
 assertion to a constant value that doesn't match the `os.name` system property.
 
-When you are done checking out the service, exit development mode by typing `q` in the shell session where
-you ran the server and then pressing the `enter/return` key.
+[role='command']
+include::{common-includes}/devmode-quit.adoc[]
 
 
 == Great work! You're done!
