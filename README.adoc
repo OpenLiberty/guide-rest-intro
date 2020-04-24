@@ -1,4 +1,4 @@
-//  Copyright (c) 2017, 2019 IBM Corporation and others.
+//  Copyright (c) 2017, 2020 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -288,14 +288,5 @@ include::{common-includes}/devmode-quit.adoc[]
 == Great work! You're done!
 
 You developed a REST service in Open Liberty by using JAX-RS and JSON-B.
-
-== Related Links
-
-Learn more about MicroProfile.
-
-https://microprofile.io/[See the MicroProfile specs^]
-
-https://openliberty.io/docs/ref/microprofile[View the MicroProfile API^]
-
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
