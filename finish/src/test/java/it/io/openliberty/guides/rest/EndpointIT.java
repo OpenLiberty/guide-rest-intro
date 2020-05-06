@@ -1,6 +1,6 @@
 // tag::comment[]
 /*******************************************************************************
- * Copyright (c) 2017, 2019 IBM Corporation and others.
+ * Copyright (c) 2017, 2020 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  // end::comment[]
 package it.io.openliberty.guides.rest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Properties;
 
@@ -23,7 +23,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class EndpointIT {
     
@@ -51,8 +51,8 @@ public class EndpointIT {
         // end::requestget[]
 
         // tag::assertequals[]
-        assertEquals("Incorrect response code from " + url, 
-                     Response.Status.OK.getStatusCode(), response.getStatus());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(),
+                     "Incorrect response code from " + url);
         // end::assertequals[]
 
         // tag::body[]
@@ -60,9 +60,8 @@ public class EndpointIT {
         Properties sysProps = jsonb.fromJson(json, Properties.class);
 
         // tag::assertosname[]
-        assertEquals("The system property for the local and remote JVM should match",
-                     System.getProperty("os.name"),
-                     sysProps.getProperty("os.name"));
+        assertEquals(System.getProperty("os.name"), sysProps.getProperty("os.name"),
+                     "The system property for the local and remote JVM should match");
         // end::assertosname[]
         // end::body[]
         response.close();
