@@ -14,7 +14,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Liberty configuration -->
         <!-- tag::defaultHttpPort[] -->
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
