@@ -13,9 +13,9 @@ after_script:
 - ol_jv=$(grep -i "version" $logsPath/console.log);
 - jv=$(printf '%s\n' "${ol_jv//$' on '/$'\n'}" | sed '2q;d'); 
 - echo -e "\n"; \
-  echo -e "\033[1;34m Open Liberty release: \033[0m\033[1;36m $release \033[0m \n"; \
-  echo -e "\033[1;34m Open Liberty build number: \033[0m\033[1;36m $number \033[0m \n"; \
-  echo -e "\033[1;34m Java version: \033[0m\033[1;36m $jv \033[0m \n";
+  echo -e "\033[1;34m Open Liberty release:\033[0m\033[1;36m $release \033[0m \n"; \
+  echo -e "\033[1;34m Open Liberty build number:\033[0m\033[1;36m $number \033[0m \n"; \
+  echo -e "\033[1;34m Java version:\033[0m\033[1;36m $jv \033[0m \n";
 - cd $logsPath;
 - repo_name=$(echo "$TRAVIS_REPO_SLUG" | sed -e "s/\//-/g"); 
 - if [ "$TRAVIS_TEST_RESULT" -eq 0 ]; then result="passed"; else result="failed"; fi; 
