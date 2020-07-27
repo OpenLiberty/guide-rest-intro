@@ -227,6 +227,9 @@ ErrorResponse.java
 include::finish/src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java[]
 ----
 
+The [hotspot file=0]`ErrorResponse` class will define the JSON contents of our response. 
+It contains fields for the error code and error message. 
+
 [role="code_command hotspot", subs="quotes"]
 ----
 #Create the `GenericExceptionMapper` class.#
@@ -240,8 +243,7 @@ include::finish/src/main/java/io/openliberty/guides/rest/exceptions/GenericExcep
 ----
 
 When JAX-RS sees any `Throwable`, it will search for a matching `ExceptionMapper` interface that has been marked with the [hotspot=provider file=1]`@Provider` annotation. 
-It will pass the `Throwable` to the [hotpost=toResponse file=1]`toResponse()` method to construct a response.
-The [hotspot file=0]`ErrorResponse` class defines the JSON contents of the response. 
+It will pass the `Throwable` to the [hotpost=toResponse file=1]`toResponse()` method to construct a response using the `ErrorResponse` class.
 
 The `GenericExceptionMapper` class will be used for any `Throwable` that does not have a more specific `ExceptionMapper` interface implemented. 
 
@@ -251,7 +253,7 @@ The `GenericExceptionMapper` class will be used for any `Throwable` that does no
 `src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java`
 ----
 
-GenericExceptionMapper.java
+NotFoundExceptionMapper.java
 [source, Java, linenums, role="code_column hide_tags=comment"]
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java[]
