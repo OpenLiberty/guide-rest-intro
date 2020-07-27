@@ -204,6 +204,66 @@ Check out the service that you created at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
 // =================================================================================================
+// Exception Handling
+// =================================================================================================
+
+== Exception Handling
+
+If a resource doesn't exist or the service experiences an exception, the client will receive either an empty response or an HTML error page respectively.
+A client should not receive either of these.
+Clients should receive JSON responses. 
+
+This will be handled using an `ExceptionMapper` which maps exceptions to responses and builds appropriate JSON payloads. 
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Create the `ErrorResponse` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java`
+----
+
+ErrorResponse.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java[]
+----
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Create the `GenericExceptionMapper` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/GenericExceptionMapper.java`
+----
+
+GenericExceptionMapper.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/GenericExceptionMapper.java[]
+----
+
+When JAX-RS sees any `Throwable`, it will search for a matching `ExceptionMapper` interface that has been marked with the [hotspot=provider file=1]`@Provider` annotation. 
+It will pass the `Throwable` to the [hotpost=toResponse file=1]`toResponse()` method to construct a response.
+The [hotspot file=0]`ErrorResponse` class defines the JSON contents of the response. 
+
+The `GenericExceptionMapper` class will be used for any `Throwable` that does not have a more specific `ExceptionMapper` interface implemented. 
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Create the `NotFoundExceptionMapper` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java`
+----
+
+GenericExceptionMapper.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java[]
+----
+
+The [hotspot file=2]`NotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
+The type of the generic inside is now [hotspot=generic file=2]`NotFoundException` instead of `Throwable`.
+It will only map to instances of `NotFoundException` that the application throws. 
+
+See this error by visiting a URL for a resource that doesn't exist such as http://localhost:9080/LibertyProject/System/DoesNotExist[^].
+
+// =================================================================================================
 // Testing the service
 // =================================================================================================
 
