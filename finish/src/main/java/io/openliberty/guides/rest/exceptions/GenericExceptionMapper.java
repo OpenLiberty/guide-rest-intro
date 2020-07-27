@@ -13,7 +13,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
     // tag::toResponse[]
     @Override
     public Response toResponse(Throwable t) {
-        ErrorResponse response = new ErrorResponse("500", t.getMessage());
+        ErrorResponse response = new ErrorResponse(500, t.getMessage());
         return Response.serverError()
                        .entity(response)
                        .type(MediaType.APPLICATION_JSON)

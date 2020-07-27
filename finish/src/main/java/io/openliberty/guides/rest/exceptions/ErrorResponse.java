@@ -1,16 +1,16 @@
 package io.openliberty.guides.rest.exceptions;
 
 public class ErrorResponse {
-    String errorCode;
+    int errorCode;
     String errorMessage;
 
-    public ErrorResponse(String errorCode, String errorMessage) {
+    public ErrorResponse(int errorCode, String errorMessage) {
         super();
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
     
-    public String getErrorCode() {
+    public int getErrorCode() {
         return this.errorCode;
     }
     
