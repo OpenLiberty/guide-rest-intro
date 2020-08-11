@@ -49,7 +49,7 @@ each property is a field in a JSON object like this:
 }
 ----
 
-The design of an HTTP API is essential when creating a web application. The REST API has exclusively 
+The design of an HTTP API is essential when creating a web application. The REST API has 
 become the go-to architectural style for building an HTTP API. The JAX-RS API offers functionality 
 on creating, reading, updating, and deleting exposed resources. The JAX-RS API supports the creation 
 of RESTful web services that induce desirable properties, such as performance, scalability, and 
@@ -135,7 +135,7 @@ For this application, a JSON structure is to be returned. The desired `Content-T
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
-(JSON-B) and JAX-B. The method body returns the result of `System.getProperties()` that is of type `java.util.Properties`. Since the method 
+(JSON-B). The method body returns the result of `System.getProperties()` that is of type `java.util.Properties`. Since the method 
 is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to automatically convert the returned object
 to JSON data in the HTTP response.
 
@@ -204,7 +204,11 @@ http://localhost:9080/LibertyProject/System/properties[^] URL.
 
 == Testing the service
 
-JUnit and the JAX-RS Client API provide a simple environment to test the application.
+You can test this service manually by starting a server and pointing a web browser at the
+http://localhost:9080/LibertyProject/System/properties[^] URL. However, automated tests are a 
+much better approach because they trigger a failure if a change introduces a bug. JUnit and the JAX-RS 
+Client API provide a simple environment to test the application.
+
 You can write tests for the individual units of code outside of a running application server, or they
 can be written to call the application server directly. In this example, you will create a test that
 does the latter.
