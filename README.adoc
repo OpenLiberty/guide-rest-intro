@@ -135,7 +135,7 @@ For this application, a JSON structure is to be returned. The desired `Content-T
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
-(JSON-B). The method body returns the result of `System.getProperties()` which is of type `java.util.Properties`. Since the method 
+(JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. Since the method 
 is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to automatically convert the returned object
 to JSON data in the HTTP response.
 
