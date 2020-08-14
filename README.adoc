@@ -50,10 +50,10 @@ each property is a field in a JSON object like this:
 ----
 
 The design of an HTTP API is essential when creating a web application. The REST API has 
-become the go-to architectural style for building an HTTP API. The JAX-RS API offers functionality 
-on creating, reading, updating, and deleting exposed resources. The JAX-RS API supports the creation 
-of RESTful web services that induce desirable properties, such as performance, scalability, and 
-modifiability.
+become the go-to architectural style for building an HTTP API. The JAX-RS API offers 
+functionality for creating, reading, updating, and deleting exposed resources. The JAX-RS API 
+supports the creation of RESTful web services that come with desirable properties, 
+such as performance, scalability, and modifiability.
 
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
@@ -89,9 +89,9 @@ common path. You can think of the JAX-RS application as a wrapper for all of you
 `src/main/java/io/openliberty/guides/rest/SystemApplication.java`
 ----
 
-The [hotspot=systemApplication]`SystemApplication` class extends the `Application` class, which 
-in turn associates all JAX-RS resource classes in the WAR file with this JAX-RS application. These resources become available under the common path specified using the [hotspot=applicationPath]`@ApplicationPath` 
-annotation. The `@ApplicationPath` annotation has a value that indicates the path within the WAR that the JAX-RS application accepts requests from.
+The [hotspot=systemApplication]`SystemApplication` class extends the `Application` class, which associates all JAX-RS resource classes in the WAR file with this JAX-RS application. These resources become available under the common path that's specified with the [hotspot=applicationPath]`@ApplicationPath` 
+annotation. The `@ApplicationPath` annotation has a value that indicates the path in the WAR file that 
+the JAX-RS application accepts requests from.
 
 SystemApplication.java
 [source, Java, linenums, role='code_column hide_tags=comment']
@@ -124,7 +124,7 @@ in the JAX-RS application. The [hotspot=applicationPath file=1]`@ApplicationPath
 the [hotspot=path file=0]`@Path` annotation in this class indicates that the resource is available at the `System/properties`
 path.
 
-JAX-RS maps the HTTP methods on the URL to the methods of the class using annotations. 
+JAX-RS maps the HTTP methods on the URL to the methods of the class by using annotations. 
 Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request
 to the `System/properties` path.
 
@@ -135,7 +135,7 @@ For this application, a JSON structure is to be returned. The desired `Content-T
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
-(JSON-B). The method body returns the result of `System.getProperties()` that is of type `java.util.Properties`. Since the method 
+(JSON-B). The method body returns the result of `System.getProperties()` which is of type `java.util.Properties`. Since the method 
 is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to automatically convert the returned object
 to JSON data in the HTTP response.
 
@@ -282,6 +282,6 @@ include::{common-includes}/devmode-quit.adoc[]
 
 == Great work! You're done!
 
-You have just developed a REST service in Open Liberty by using JAX-RS and JSON-B.
+You just developed a REST service in Open Liberty by using JAX-RS and JSON-B.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
