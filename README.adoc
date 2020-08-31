@@ -238,7 +238,7 @@ include::finish/src/main/java/io/openliberty/guides/rest/exceptions/GenericExcep
 ----
 
 When JAX-RS sees any `Throwable`, it will search for a matching `ExceptionMapper` interface that has been marked with the [hotspot=provider file=1]`@Provider` annotation. 
-It will pass the `Throwable` to the [hotpost=toResponse file=1]`toResponse()` method to construct a response using the [hotspot file=0]`ErrorResponse` class.
+It will pass the `Throwable` to the [hotspot=toResponse file=1]`toResponse()` method to construct a response using the [hotspot file=0]`ErrorResponse` class.
 
 The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwable` that does not have a more specific `ExceptionMapper` interface implemented. 
 
