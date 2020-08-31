@@ -19,6 +19,6 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
                        .type(MediaType.APPLICATION_JSON)
                        .build();
     }
-    //end::toResponse[]
+    // end::toResponse[]
 
 }
