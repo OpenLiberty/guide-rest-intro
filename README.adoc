@@ -210,7 +210,7 @@ Clients should receive JSON responses.
 
 This will be handled using an `ExceptionMapper` which maps exceptions to responses and builds appropriate JSON payloads. 
 
-[role="code_command hotspot", subs="quotes"]
+[role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `ErrorResponse` class.#
 `src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java`
@@ -225,7 +225,7 @@ include::finish/src/main/java/io/openliberty/guides/rest/exceptions/ErrorRespons
 The [hotspot file=0]`ErrorResponse` class will define the JSON contents of our response. 
 It contains fields for the error code and error message. 
 
-[role="code_command hotspot", subs="quotes"]
+[role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `GenericExceptionMapper` class.#
 `src/main/java/io/openliberty/guides/rest/exceptions/GenericExceptionMapper.java`
@@ -242,7 +242,7 @@ It will pass the `Throwable` to the [hotspot=toResponse file=1]`toResponse()` me
 
 The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwable` that does not have a more specific `ExceptionMapper` interface implemented. 
 
-[role="code_command hotspot", subs="quotes"]
+[role="code_command hotspot file=2", subs="quotes"]
 ----
 #Create the `NotFoundExceptionMapper` class.#
 `src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java`
