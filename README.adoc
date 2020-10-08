@@ -204,11 +204,10 @@ http://localhost:9080/LibertyProject/System/properties[^] URL.
 
 == Exception Handling
 
-If a resource doesn't exist or the service experiences an exception, the client will receive either an empty response or an HTML error page respectively.
-A client should not receive either of these.
-Clients should receive JSON responses. 
+Most application developers will want to ensure that when an exception occurs in the application (such as the client requesting a resource that does not exist or posting an invalid resource, etc.) that it is handled consistently and in a way that allows the client to fully understand the failure (i.e. bad input, server outage, etc.). 
+This can be accomplished using the exception handling mechanisms in JAX-RS such as sending a `Response` via a `WebApplicationException` (or subclass) or by using `ExceptionMapper` providers.
 
-This will be handled using an `ExceptionMapper` which maps exceptions to responses and builds appropriate JSON payloads. 
+The following example uses an `ExceptionMapper` which maps exceptions to responses and builds appropriate JSON payloads. 
 
 [role="code_command hotspot file=0", subs="quotes"]
 ----
