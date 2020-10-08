@@ -9,29 +9,48 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
- // end::comment[]
+// end::comment[]
 package io.openliberty.guides.rest;
 
 import java.util.Properties;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import io.openliberty.guides.rest.exceptions.PropertyNotFoundException;
 
 // tag::path[]
 @Path("properties")
 // end::path[]
 public class PropertiesResource {
 
-    // tag::get[]
+    // tag::get1[]
     @GET
-    // end::get[]
+    // end::get1[]
     // tag::produces[]
     @Produces(MediaType.APPLICATION_JSON)
     // end::produces[]
     public Properties getProperties() {
         return System.getProperties();
+    }
+
+    // tag::get2[]
+    @GET
+    // end::get2[]
+    // tag::pathParam[]
+    @Path("/{property}")
+    // end::pathParam[]
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getProperty(@PathParam("property") String prop) throws PropertyNotFoundException {
+        Properties properties = System.getProperties();
+        System.out.println(prop);
+        if (properties.containsKey(prop)) {
+            return properties.getProperty(prop);
+        }
+        throw new PropertyNotFoundException("Property " + prop + " not found");
     }
 
 }
