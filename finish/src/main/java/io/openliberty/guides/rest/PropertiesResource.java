@@ -40,11 +40,14 @@ public class PropertiesResource {
     // tag::get2[]
     @GET
     // end::get2[]
-    // tag::pathParam[]
+    // tag::pathParam1[]
     @Path("/{property}")
-    // end::pathParam[]
+    // end::pathParam1[]
     @Produces(MediaType.TEXT_PLAIN)
+    // tag::getProperty[]
+    // tag::pathParam2[]
     public String getProperty(@PathParam("property") String prop) throws PropertyNotFoundException {
+    // end::pathParam2[]
         Properties properties = System.getProperties();
         System.out.println(prop);
         if (properties.containsKey(prop)) {
@@ -52,5 +55,6 @@ public class PropertiesResource {
         }
         throw new PropertyNotFoundException("Property " + prop + " not found");
     }
+    // end::getProperty[]
 
 }

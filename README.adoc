@@ -125,14 +125,17 @@ the [hotspot=path file=0]`@Path` annotation in this class indicates that the res
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods of the class by using annotations. 
-Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request
+Your application uses the [hotspot=get1]`GET` annotation to map an HTTP `GET` request
 to the `System/properties` path.
 
-The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
+The [hotspot=get1 get2 file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
 method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The
 value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
+
+The [hotspot=pathParam1 file=0]`@Path` annotation with curly braces passes text from the path to the function using the [hotspot=pathParam2 file=0]`@PathParam` annotation.
+For example going to the path `System/properties/os.name` will pass in `os.name` as a String to the [hotspot=getProperty file=0]`getProperty()` function. 
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
 (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. Since the method 
@@ -243,21 +246,21 @@ The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwab
 
 [role="code_command hotspot file=2", subs="quotes"]
 ----
-#Create the `NotFoundExceptionMapper` class.#
+#Create the `PropertyNotFoundExceptionMapper` class.#
 `src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java`
 ----
 
 NotFoundExceptionMapper.java
 [source, Java, linenums, role="code_column hide_tags=comment"]
 ----
-include::finish/src/main/java/io/openliberty/guides/rest/exceptions/NotFoundExceptionMapper.java[]
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundExceptionMapper.java[]
 ----
 
-The [hotspot file=2]`NotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
-The type of the generic inside is now [hotspot=generic file=2]`NotFoundException` instead of `Throwable`.
-It will only map to instances of `NotFoundException` that the application throws. 
+The [hotspot file=2]`PropertyNotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
+The type of the generic inside is now [hotspot=generic file=2]`PropertyNotFoundException` instead of `Throwable`.
+It will only map to instances of `PropertyNotFoundException` that the application throws. 
 
-See this error by visiting a URL for a resource that doesn't exist such as http://localhost:9080/LibertyProject/System/DoesNotExist[^].
+See this error by visiting a URL for a property that doesn't exist such as http://localhost:9080/LibertyProject/System/properties/doesNotExist[^].
 
 // =================================================================================================
 // Testing the service
