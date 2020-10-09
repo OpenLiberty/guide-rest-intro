@@ -46,8 +46,9 @@ public class PropertiesResource {
     @Produces(MediaType.TEXT_PLAIN)
     // tag::getProperty[]
     // tag::pathParam2[]
-    public String getProperty(@PathParam("property") String prop) throws PropertyNotFoundException {
+    public String getProperty(@PathParam("property") String prop) 
     // end::pathParam2[]
+            throws PropertyNotFoundException {
         Properties properties = System.getProperties();
         System.out.println(prop);
         if (properties.containsKey(prop)) {
