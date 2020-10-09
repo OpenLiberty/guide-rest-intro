@@ -250,7 +250,7 @@ The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwab
 `src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java`
 ----
 
-PropertyNotFoundExceptionMapper.java
+PropertyNotFoundException.java
 [source, Java, linenums, role="code_column hide_tags=comment"]
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java[]
