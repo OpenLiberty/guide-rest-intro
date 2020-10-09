@@ -6,8 +6,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
+public class PropertyNotFoundExceptionMapper 
 // tag::generic[]
-public class PropertyNotFoundExceptionMapper implements ExceptionMapper<PropertyNotFoundException> {
+        implements ExceptionMapper<PropertyNotFoundException> {
 // end::generic[]
 
     @Override
