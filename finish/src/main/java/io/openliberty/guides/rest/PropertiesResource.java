@@ -30,9 +30,9 @@ public class PropertiesResource {
     // tag::get1[]
     @GET
     // end::get1[]
-    // tag::produces[]
+    // tag::produces1[]
     @Produces(MediaType.APPLICATION_JSON)
-    // end::produces[]
+    // end::produces1[]
     public Properties getProperties() {
         return System.getProperties();
     }
@@ -43,7 +43,9 @@ public class PropertiesResource {
     // tag::pathParam1[]
     @Path("/{property}")
     // end::pathParam1[]
+    // tag::produces2[]
     @Produces(MediaType.TEXT_PLAIN)
+    // end::produces2[]
     // tag::getProperty[]
     // tag::pathParam2[]
     public String getProperty(@PathParam("property") String prop) 
