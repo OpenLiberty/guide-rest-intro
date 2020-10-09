@@ -246,6 +246,18 @@ The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwab
 
 [role="code_command hotspot file=2", subs="quotes"]
 ----
+#Create the `PropertyNotFoundException` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java`
+----
+
+PropertyNotFoundExceptionMapper.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java[]
+----
+
+[role="code_command hotspot file=3", subs="quotes"]
+----
 #Create the `PropertyNotFoundExceptionMapper` class.#
 `src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundExceptionMapper.java`
 ----
@@ -256,9 +268,9 @@ PropertyNotFoundExceptionMapper.java
 include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundExceptionMapper.java[]
 ----
 
-The [hotspot file=2]`PropertyNotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
-The type of the generic inside is now [hotspot=generic file=2]`PropertyNotFoundException` instead of `Throwable`.
-It will only map to instances of `PropertyNotFoundException` that the application throws. 
+The [hotspot file=3]`PropertyNotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
+The type of the generic inside is now [hotspot=generic file=3]`PropertyNotFoundException` instead of `Throwable`.
+It will only map to instances of [hotspot file=2]`PropertyNotFoundException` that the application throws. 
 
 See this error by visiting a URL for a property that doesn't exist such as http://localhost:9080/LibertyProject/System/properties/doesNotExist[^].
 
