@@ -6,8 +6,6 @@ name: Test application
 on:
   pull_request:
     branches: [ qa ]
-  push:
-    branches: [ qa ]
 
 jobs:
   java8build:
