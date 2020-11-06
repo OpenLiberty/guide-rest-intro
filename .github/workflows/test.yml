@@ -1,0 +1,37 @@
+# This workflow will test the guide application.
+# For more information about building and testing Java,
+# see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Test application
+
+on:
+  pull_request:
+    branches: [ qa ]
+
+jobs:
+  java8build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: finish
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - run: unset _JAVA_OPTIONS
+    - name: Run tests
+      run: chmod +x ../scripts/travisTest.sh && sudo ../scripts/travisTest.sh
+    - name: Post tests
+      if: always()
+      run: |
+          logsPath=$(sudo find . -name "console.log");
+          sudo cat $logsPath | sudo grep Launching
+    - name: Archive server logs if failed
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: server-logs
+        path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
