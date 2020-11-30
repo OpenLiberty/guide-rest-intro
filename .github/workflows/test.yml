@@ -6,32 +6,35 @@ name: Test application
 
 on:
   pull_request:
-    branches: [ qa ]
+    branches: [qa]
 
 jobs:
-  java8build:
+  build:
     runs-on: ubuntu-latest
+    needs: [set_java]
+    strategy:
+      matrix: [8]
     defaults:
       run:
         working-directory: finish
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - run: unset _JAVA_OPTIONS
-    - name: Run tests
-      run: chmod +x ../scripts/travisTest.sh && sudo ../scripts/travisTest.sh
-    - name: Post tests
-      if: always()
-      run: |
+      - uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: $${{ matrix.jdk }}
+      - run: unset _JAVA_OPTIONS
+      - name: Run tests
+        run: sudo ../scripts/testApp.sh
+      - name: Post tests
+        if: always()
+        run: |
           logsPath=$(sudo find . -name "console.log");
           sudo cat $logsPath | sudo grep Launching
-    - name: Archive server logs if failed
-      if: failure()
-      uses: actions/upload-artifact@v2
-      with:
-        name: server-logs
-        path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
+      - name: Archive server logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-logs
+          path: finish/target/liberty/wlp/usr/servers/guideServer/logs/
