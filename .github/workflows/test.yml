@@ -19,7 +19,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: $${{ matrix.jdk }}
+          java-version: ${{ matrix.jdk }}
       - run: unset _JAVA_OPTIONS
       - name: Run tests
         run: sudo ../scripts/testApp.sh
