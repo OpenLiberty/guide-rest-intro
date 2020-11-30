@@ -1,19 +1,15 @@
-# This workflow will test the guide application.
-# For more information about building and testing Java,
-# see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Test application
 
 on:
   pull_request:
-    branches: [qa]
+    branches: [ qa ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        jdk: [1.8]
+        jdk: [ 8 ]
     defaults:
       run:
         working-directory: finish
