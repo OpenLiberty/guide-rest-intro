@@ -5,8 +5,8 @@ name: action
 on:
   push:
     branches:
-      - 'sn-automation-testing-master'
-      - 'sn-automation-testing-qa'
+      - 'master'
+      - 'qa'
     paths:
       - 'README.adoc'
       - 'start/**'
