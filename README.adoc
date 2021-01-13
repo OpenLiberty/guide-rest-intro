@@ -1,4 +1,4 @@
-//  Copyright (c) 2017, 2020 IBM Corporation and others.
+//  Copyright (c) 2017, 2021 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -36,7 +36,7 @@ Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 == What you'll learn
 
 You will learn how to build and test a simple REST service with JAX-RS and JSON-B, which will expose
-the JVM's system properties. The REST service will respond to `GET` requests made to the `\http://localhost:9080/LibertyProject/System/properties` URL.
+the JVM's system properties. The REST service will respond to `GET` requests made to the `http://localhost:9080/LibertyProject/System/properties` URL.
 
 The service responds to a `GET` request with a JSON representation of the system properties, where
 each property is a field in a JSON object like this:
