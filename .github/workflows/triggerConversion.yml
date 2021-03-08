@@ -6,7 +6,10 @@ on:
   push:
     branches:
       - 'master'
+      - 'main'
+      - 'prod'
       - 'qa'
+      - 'staging'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,4 +31,4 @@ jobs:
         repo: OpenLiberty/cloud-hosted-guides
         token: ${{ secrets.GUIDECONVERSIONTOOL_PASSWORD }}
         inputs: '{ "branch": "${{ github.ref }}", "guide_name": "${{ github.event.repository.name }}" }'
-        ref: "refs/heads/master"
+        ref: "refs/heads/prod"
