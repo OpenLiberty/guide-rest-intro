@@ -1,4 +1,4 @@
-//  Copyright (c) 2017, 2020 IBM Corporation and others.
+//  Copyright (c) 2017, 2021 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -15,7 +15,7 @@
 :page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
-:page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
+:page-tags: ['MicroProfile', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :page-seo-title: Building a simple RESTful Java microservice using JAX-RS and JSON-B
@@ -61,8 +61,7 @@ include::{common-includes}/gitclone.adoc[]
 [role='command']
 include::{common-includes}/twyb-intro.adoc[]
 
-Check out the service at the
-http://localhost:9080/LibertyProject/System/properties[^] URL. 
+Check out the service at the http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
 [role='command']
 include::{common-includes}/twyb-end.adoc[]
@@ -195,8 +194,7 @@ The variables that are being used in the [hotspot=httpEndpoint hotspot=webApplic
 [role='command']
 include::{common-includes}/devmode-build.adoc[]
 
-Check out the service that you created at the
-http://localhost:9080/LibertyProject/System/properties[^] URL. 
+Check out the service that you created at the http://localhost:9080/LibertyProject/System/properties[^] URL. 
 
 // =================================================================================================
 // Testing the service
@@ -204,10 +202,21 @@ http://localhost:9080/LibertyProject/System/properties[^] URL.
 
 == Testing the service
 
+// static guide instructions:
+ifndef::cloud-hosted[]
 You can test this service manually by starting a server and pointing a web browser at the
 http://localhost:9080/LibertyProject/System/properties[^] URL. However, automated tests are a 
 much better approach because they trigger a failure if a change introduces a bug. JUnit and the JAX-RS 
 Client API provide a simple environment to test the application.
+endif::[]
+
+// cloud-hosted guide instructions:
+ifdef::cloud-hosted[]
+You can test this service manually by starting a server and pointing a web browser at the
+http://localhost:9080/LibertyProject/System/properties URL. However, automated tests are a 
+much better approach because they trigger a failure if a change introduces a bug. JUnit and the JAX-RS 
+Client API provide a simple environment to test the application.
+endif::[]
 
 You can write tests for the individual units of code outside of a running application server, or they
 can be written to call the application server directly. In this example, you will create a test that
