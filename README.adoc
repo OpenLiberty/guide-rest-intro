@@ -15,7 +15,7 @@
 :page-essential-order: 1
 :page-description: Learn how to create a REST service with JAX-RS, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
-:page-tags: ['MicroProfile', 'Java EE', 'Jakarta EE']
+:page-tags: ['MicroProfile', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :page-seo-title: Building a simple RESTful Java microservice using JAX-RS and JSON-B
