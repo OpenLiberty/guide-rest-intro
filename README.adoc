@@ -75,7 +75,7 @@ include::{common-includes}/twyb-end.adoc[]
 Navigate to the `start` directory to begin.
 
 [role='command']
-include::{common-includes}/devmode-start.adoc[]
+include::{common-includes}/devmode-lmp33-start.adoc[]
 
 JAX-RS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is
 modelled as a class. The second is a JAX-RS application, which groups all exposed resources under a
