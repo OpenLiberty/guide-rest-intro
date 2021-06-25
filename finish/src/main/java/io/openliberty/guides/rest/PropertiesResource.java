@@ -9,29 +9,58 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
- // end::comment[]
+// end::comment[]
 package io.openliberty.guides.rest;
 
 import java.util.Properties;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import io.openliberty.guides.rest.exceptions.PropertyNotFoundException;
 
 // tag::path[]
 @Path("properties")
 // end::path[]
 public class PropertiesResource {
 
-    // tag::get[]
+    // tag::get1[]
     @GET
-    // end::get[]
-    // tag::produces[]
+    // end::get1[]
+    // tag::produces1[]
     @Produces(MediaType.APPLICATION_JSON)
-    // end::produces[]
+    // end::produces1[]
     public Properties getProperties() {
         return System.getProperties();
     }
+
+    // tag::get2[]
+    @GET
+    // end::get2[]
+    // tag::pathParam1[]
+    @Path("/{property}")
+    // end::pathParam1[]
+    // tag::produces2[]
+    @Produces(MediaType.APPLICATION_JSON)
+    // end::produces2[]
+    // tag::getProperty[]
+    // tag::pathParam2[]
+    public String getProperty(@PathParam("property") String prop) 
+    // end::pathParam2[]
+            throws PropertyNotFoundException {
+        Properties properties = System.getProperties();
+        System.out.println(prop);
+        if (properties.containsKey(prop)) {
+            return "{" + 
+                "\"" + prop + "\" : " + 
+                "\"" + properties.getProperty(prop) + "\"" + 
+            "}";
+        }
+        throw new PropertyNotFoundException("Property " + prop + " not found");
+    }
+    // end::getProperty[]
 
 }
