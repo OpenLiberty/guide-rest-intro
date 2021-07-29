@@ -175,9 +175,9 @@ The configuration does the following actions:
 
 * Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 * Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`<httpEndpoint/>` element. Variables use the `${variableName}` syntax.
+the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
 * Configures the server to run the produced web application on a context root specified in the 
-[hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`<webApplication/>` element.
+[hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -246,7 +246,7 @@ include::finish/pom.xml[]
 The test code needs to know some information about the application to make requests. The server port and the application context root are key, and are dictated by the server configuration. While this information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=defaultHttpPort file=1]`default.http.port`, [hotspot=defaultHttpsPort file=1]`default.https.port` and [hotspot=appContextRoot file=1]`app.context.root` elements are provided in the file.
 
 
-These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`<systemPropertyVariables/>` element in the [hotspot file=1]`pom.xml` file.
+These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`systemPropertyVariables` element in the [hotspot file=1]`pom.xml` file.
 
 Getting the values to create a representation of the URL is simple. The test class uses the [hotspot=systemProperties file=0]`getProperty` method
 to get the application details.
