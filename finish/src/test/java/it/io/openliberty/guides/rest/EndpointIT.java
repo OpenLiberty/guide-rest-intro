@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 
 public class EndpointIT {
-    private static final Jsonb jsonb = JsonbBuilder.create();
+    private static final Jsonb JSONB = JsonbBuilder.create();
     // tag::test[]
     @Test
     // end::test[]
@@ -55,7 +55,7 @@ public class EndpointIT {
 
         // tag::body[]
         String json = response.readEntity(String.class);
-        Properties sysProps = jsonb.fromJson(json, Properties.class);
+        Properties sysProps = JSONB.fromJson(json, Properties.class);
 
         // tag::assertosname[]
         assertEquals(System.getProperty("os.name"), sysProps.getProperty("os.name"),
