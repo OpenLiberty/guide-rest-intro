@@ -93,7 +93,7 @@ annotation. The `@ApplicationPath` annotation has a value that indicates the pat
 the JAX-RS application accepts requests from.
 
 SystemApplication.java
-[source, Java, linenums, role='code_column hide_tags=comment']
+[source, Java, linenums, role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
@@ -139,13 +139,13 @@ is annotated with `@Produces(MediaType.APPLICATION_JSON)`, JAX-RS uses JSON-B to
 to JSON data in the HTTP response.
 
 PropertiesResource.java
-[source,java,linenums,role='code_column hide_tags=comment']
+[source,java,linenums,role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/PropertiesResource.java[]
 ----
 
 SystemApplication.java
-[source,java,linenums,role='code_column hide_tags=comment']
+[source,java,linenums,role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
@@ -227,7 +227,7 @@ does the latter.
 ----
 
 EndpointIT.java
-[source, Java, linenums, role="code_column hide_tags=comment"]
+[source, Java, linenums, role="code_column hide_tags=copyright"]
 ----
 include::finish/src/test/java/it/io/openliberty/guides/rest/EndpointIT.java[]
 ----

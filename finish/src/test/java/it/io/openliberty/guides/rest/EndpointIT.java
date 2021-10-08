@@ -1,4 +1,4 @@
-// tag::comment[]
+// tag::copyright[]
 /*******************************************************************************
  * Copyright (c) 2017, 2020 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
@@ -9,7 +9,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
- // end::comment[]
+ // end::copyright[]
 package it.io.openliberty.guides.rest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,9 +26,7 @@ import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 
 public class EndpointIT {
-    
     private static final Jsonb jsonb = JsonbBuilder.create();
-
     // tag::test[]
     @Test
     // end::test[]
