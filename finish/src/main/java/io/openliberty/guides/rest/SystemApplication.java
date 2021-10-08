@@ -16,7 +16,7 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
 
 // tag::applicationPath[]
-@ApplicationPath("System")
+@ApplicationPath("system")
 // end::applicationPath[]
 // tag::systemApplication[]
 public class SystemApplication extends Application {
