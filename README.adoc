@@ -124,14 +124,17 @@ the [hotspot=path file=0]`@Path` annotation in this class indicates that the res
 path.
 
 JAX-RS maps the HTTP methods on the URL to the methods of the class by using annotations. 
-Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request
+Your application uses the [hotspot=get1]`GET` annotation to map an HTTP `GET` request
 to the `System/properties` path.
 
-The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
-method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The
-value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
+The [hotspot=get1 hotspot=get2 file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET`
+method. The [hotspot=produces1 hotspot=produces2 file=0]`@Produces` annotation indicates the format of the content that will be returned. 
+The value of the [hotspot=produces1 hotspot=produces2 file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header.
 For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
+
+The [hotspot=pathParam1 file=0]`@Path` annotation with curly braces passes text from the path to the function using the [hotspot=pathParam2 file=0]`@PathParam` annotation.
+For example going to the path `System/properties/os.name` will pass in `os.name` as a String to the [hotspot=getProperty file=0]`getProperty()` function. 
 
 JAX-RS supports a number of ways to marshal JSON. The JAX-RS 2.1 specification mandates JSON-Binding
 (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. Since the method 
@@ -195,6 +198,79 @@ The variables that are being used in the [hotspot=httpEndpoint hotspot=webApplic
 include::{common-includes}/devmode-build.adoc[]
 
 Check out the service that you created at the http://localhost:9080/LibertyProject/System/properties[^] URL. 
+
+// =================================================================================================
+// Exception Handling
+// =================================================================================================
+
+== Exception Handling
+
+Most application developers will want to ensure that when an exception occurs in the application (such as the client requesting a resource that does not exist or posting an invalid resource, etc.) that it is handled consistently and in a way that allows the client to fully understand the failure (i.e. bad input, server outage, etc.). 
+This can be accomplished using the exception handling mechanisms in JAX-RS such as sending a `Response` via a `WebApplicationException` (or subclass) or by using `ExceptionMapper` providers.
+
+The following example uses an `ExceptionMapper` which maps exceptions to responses and builds appropriate JSON payloads. 
+
+[role="code_command hotspot file=0", subs="quotes"]
+----
+#Create the `ErrorResponse` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java`
+----
+
+ErrorResponse.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/ErrorResponse.java[]
+----
+
+The [hotspot file=0]`ErrorResponse` class will define the JSON contents of our response. 
+It contains fields for the error code and error message. 
+
+[role="code_command hotspot file=1", subs="quotes"]
+----
+#Create the `GenericExceptionMapper` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/GenericExceptionMapper.java`
+----
+
+GenericExceptionMapper.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/GenericExceptionMapper.java[]
+----
+
+When JAX-RS sees any `Throwable`, it will search for a matching `ExceptionMapper` interface that has been marked with the [hotspot=provider file=1]`@Provider` annotation. 
+It will pass the `Throwable` to the [hotspot=toResponse file=1]`toResponse()` method to construct a response using the [hotspot file=0]`ErrorResponse` class.
+
+The [hotspot file=1]`GenericExceptionMapper` class will be used for any `Throwable` that does not have a more specific `ExceptionMapper` interface implemented. 
+
+[role="code_command hotspot file=2", subs="quotes"]
+----
+#Create the `PropertyNotFoundException` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java`
+----
+
+PropertyNotFoundException.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundException.java[]
+----
+
+[role="code_command hotspot file=3", subs="quotes"]
+----
+#Create the `PropertyNotFoundExceptionMapper` class.#
+`src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundExceptionMapper.java`
+----
+
+PropertyNotFoundExceptionMapper.java
+[source, Java, linenums, role="code_column hide_tags=comment"]
+----
+include::finish/src/main/java/io/openliberty/guides/rest/exceptions/PropertyNotFoundExceptionMapper.java[]
+----
+
+The [hotspot file=3]`PropertyNotFoundExceptionMapper` class is a more specific implementation of the `ExceptionMapper` interface. 
+The type of the generic inside is now [hotspot=generic file=3]`PropertyNotFoundException` instead of `Throwable`.
+It will only map to instances of [hotspot file=2]`PropertyNotFoundException` that the application throws. 
+
+See this error by visiting a URL for a property that doesn't exist such as http://localhost:9080/LibertyProject/System/properties/doesNotExist[^].
 
 // =================================================================================================
 // Testing the service

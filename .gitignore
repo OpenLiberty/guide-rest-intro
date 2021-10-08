@@ -5,3 +5,6 @@ target/
 .settings/
 .DS_store
 .vscode/
+.gradle/
+build/
+bin/
