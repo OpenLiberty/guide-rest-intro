@@ -9,7 +9,7 @@
  * Contributors:
  *     IBM Corporation - Initial implementation
  *******************************************************************************/
- // end::copyright[]
+// end::copyright[]
 package it.io.openliberty.guides.rest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
