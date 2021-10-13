@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial implementation
+ *     IBM Corporation - Initial implementation
  *******************************************************************************/
  // end::copyright[]
 package io.openliberty.guides.rest;
