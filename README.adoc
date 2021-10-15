@@ -73,6 +73,13 @@ include::{common-includes}/twyb-end.adoc[]
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
+// cloud-hosted guide instructions:
+ifdef::cloud-hosted[]
+```
+cd /home/project/guide-rest-intro/start
+```
+{: codeblock}
+endif::[]
 
 [role='command']
 include::{common-includes}/devmode-lmp33-start.adoc[]
@@ -174,10 +181,8 @@ include::finish/src/main/liberty/config/server.xml[]
 The configuration does the following actions:
 
 * Configures the server to enable JAX-RS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-* Configures the server to resolve the HTTP port numbers from variables, which are then specified in
-the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
-* Configures the server to run the produced web application on a context root specified in the 
-[hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
+* Configures the server to resolve the HTTP port numbers from variables, which are then specified in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
+* Configures the server to run the produced web application on a context root specified in the [hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
