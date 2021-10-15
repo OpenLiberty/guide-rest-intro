@@ -73,6 +73,13 @@ include::{common-includes}/twyb-end.adoc[]
 == Creating a JAX-RS application
 
 Navigate to the `start` directory to begin.
+// cloud-hosted guide instructions:
+ifdef::cloud-hosted[]
+```
+cd /home/project/guide-rest-intro/start
+```
+{: codeblock}
+endif::[]
 
 [role='command']
 include::{common-includes}/devmode-lmp33-start.adoc[]
