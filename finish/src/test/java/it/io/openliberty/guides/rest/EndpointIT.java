@@ -1,4 +1,4 @@
-// tag::comment[]
+// tag::copyright[]
 /*******************************************************************************
  * Copyright (c) 2017, 2020 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
@@ -7,9 +7,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementation
+ *     IBM Corporation - Initial implementation
  *******************************************************************************/
- // end::comment[]
+// end::copyright[]
 package it.io.openliberty.guides.rest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,9 +26,7 @@ import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 
 public class EndpointIT {
-    
-    private static final Jsonb jsonb = JsonbBuilder.create();
-
+    private static final Jsonb JSONB = JsonbBuilder.create();
     // tag::test[]
     @Test
     // end::test[]
@@ -44,7 +42,7 @@ public class EndpointIT {
         // end::clientSetup[]
 
         // tag::target[]
-        WebTarget target = client.target(url + "System/properties");
+        WebTarget target = client.target(url + "system/properties");
         // end::target[]
         // tag::requestget[]
         Response response = target.request().get();
@@ -57,7 +55,7 @@ public class EndpointIT {
 
         // tag::body[]
         String json = response.readEntity(String.class);
-        Properties sysProps = jsonb.fromJson(json, Properties.class);
+        Properties sysProps = JSONB.fromJson(json, Properties.class);
 
         // tag::assertosname[]
         assertEquals(System.getProperty("os.name"), sysProps.getProperty("os.name"),
