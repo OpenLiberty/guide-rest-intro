@@ -1,7 +1,7 @@
 <server description="Intro REST Guide Liberty server">
 
   <featureManager>
-      <feature>servlet-4.0</feature>
+      <feature>servlet-6.0</feature>
   </featureManager>
 
   <webApplication location="guide-rest-intro.war"/>
