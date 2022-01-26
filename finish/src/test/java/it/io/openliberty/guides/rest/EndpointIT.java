@@ -19,7 +19,6 @@ import java.util.Properties;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 
@@ -38,7 +37,7 @@ public class EndpointIT {
         String url = "http://localhost:" + port + "/" + context + "/";
 
         // tag::clientSetup[]
-        Client client = ClientBuilder.newClient();
+        Client client = ResteasyClientBuilder.newClient();
         // end::clientSetup[]
 
         // tag::target[]
