@@ -139,8 +139,8 @@ For this application, a JSON structure is to be returned. The desired `Content-T
 response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
 restfulWS supports a number of ways to marshal JSON. The restfulWS 2.1 specification mandates JSON-Binding
-(JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. Since the method 
-is annotated with `@Produces(MediaType.APPLICATION_JSON)`, restfulWS uses JSON-B to automatically convert the returned object
+(JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method 
+is annotated with `@Produces(MediaType.APPLICATION_JSON)` so restfulWS uses JSON-B to automatically convert the returned object
 to JSON data in the HTTP response.
 
 PropertiesResource.java
@@ -262,8 +262,8 @@ object, which can be inspected to determine whether the request was successful.
 
 The first thing to check is that a `200` response was received. The JUnit [hotspot=assertequals file=0]`assertEquals` method can be used for this check.
 
-Check the response body to ensure it returned the right information. Since the client and the server
-are running on the same machine, it is reasonable to expect that the system properties for the local
+Check the response body to ensure it returned the right information. The client and the server
+are running on the same machine so it is reasonable to expect that the system properties for the local
 and remote JVM would be the same. In this case, an [hotspot=assertosname file=0]`assertEquals` assertion is made so that the `os.name` system property
 for both JVMs is the same. You can write additional assertions to check for more values.
 
