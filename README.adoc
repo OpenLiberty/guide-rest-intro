@@ -13,7 +13,7 @@
 :page-guide-category: microprofile
 :page-essential: true
 :page-essential-order: 1
-:page-description: Learn how to create a RESTful service with restfulWS, JSON-B, and Open Liberty.
+:page-description: Learn how to create a RESTful service with RESTful Web Services, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
 :page-tags: ['MicroProfile', 'Jakarta EE']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
@@ -26,7 +26,7 @@
 [.hidden]
 NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
 
-Learn how to create a RESTful service with restfulWS, JSON-B, and Open Liberty.
+Learn how to create a RESTful service with RESTful Web Services, JSON-B, and Open Liberty.
 
 
 // =================================================================================================
@@ -47,7 +47,7 @@ The service responds to a `GET` request with a JSON representation of the system
 }
 ----
 
-The design of an HTTP API is essential when creating a web application. The REST API has become the go-to architectural style for building an HTTP API. The restfulWS API offers functionality for creating, reading, updating, and deleting exposed resources. The restfulWS API supports the creation of RESTful web services that come with desirable properties, such as performance, scalability, and modifiability.
+The design of an HTTP API is essential when creating a web application. The REST API has become the go-to architectural style for building an HTTP API. The RESTful Web Services API offers functionality for creating, reading, updating, and deleting exposed resources. The RESTful Web Services API supports the creation of RESTful web services that come with desirable properties, such as performance, scalability, and modifiability.
 
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
@@ -77,7 +77,7 @@ endif::[]
 [role='command']
 include::{common-includes}/devmode-lmp33-start.adoc[]
 
-RestfulWS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is modelled as a class. The second is a restfulWS application, which groups all exposed resources under a common path. You can think of the restfulWS application as a wrapper for all of your resources.
+RestfulWS has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is modelled as a class. The second is a RESTful Web Services application, which groups all exposed resources under a common path. You can think of the RESTful Web Services application as a wrapper for all of your resources.
 
 
 [role="code_command hotspot" ,subs="quotes"]
@@ -92,15 +92,15 @@ SystemApplication.java
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
 
-The [hotspot=systemApplication]`SystemApplication` class extends the `Application` class, which associates all restfulWS resource classes in the WAR file with this restfulWS application. These resources become available under the common path that's specified with the [hotspot=applicationPath]`@ApplicationPath` annotation. The `@ApplicationPath` annotation has a value that indicates the path in the WAR file that the restfulWS application accepts requests from.
+The [hotspot=systemApplication]`SystemApplication` class extends the `Application` class, which associates all RESTful Web Services resource classes in the WAR file with this RESTful Web Services application. These resources become available under the common path that's specified with the [hotspot=applicationPath]`@ApplicationPath` annotation. The `@ApplicationPath` annotation has a value that indicates the path in the WAR file that the RESTful Web Services application accepts requests from.
 
 // =================================================================================================
-// Creating the restfulWS resource
+// Creating the RESTful Web Services resource
 // =================================================================================================
 
-== Creating the restfulWS resource
+== Creating the RESTful Web Services resource
 
-In restfulWS, a single class should represent a single resource, or a group of resources of the same type. In this application, a resource might be a system property, or a set of system properties. It is easy to have a single class handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
+In RESTful Web Services, a single class should represent a single resource, or a group of resources of the same type. In this application, a resource might be a system property, or a set of system properties. It is easy to have a single class handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -120,13 +120,13 @@ SystemApplication.java
 include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[]
 ----
 
-The [hotspot=path file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path in the restfulWS application. The [hotspot=applicationPath file=1]`@ApplicationPath` annotation in the [hotspot=systemApplication file=1]`SystemApplication` class together with the [hotspot=path file=0]`@Path` annotation in this class indicates that the resource is available at the `system/properties` path.
+The [hotspot=path file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path in the RESTful Web Services application. The [hotspot=applicationPath file=1]`@ApplicationPath` annotation in the [hotspot=systemApplication file=1]`SystemApplication` class together with the [hotspot=path file=0]`@Path` annotation in this class indicates that the resource is available at the `system/properties` path.
 
 RestfulWS maps the HTTP methods on the URL to the methods of the class by using annotations. Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request to the `system/properties` path.
 
 The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET` method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header. For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
-RestfulWS supports a number of ways to marshal JSON. The restfulWS 2.1 specification mandates JSON-Binding (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method is annotated with `@Produces(MediaType.APPLICATION_JSON)` so restfulWS uses JSON-B to automatically convert the returned object to JSON data in the HTTP response.
+RestfulWS supports a number of ways to marshal JSON. The RESTful Web Services specification mandates JSON-Binding (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method is annotated with `@Produces(MediaType.APPLICATION_JSON)` so RESTful Web Services uses JSON-B to automatically convert the returned object to JSON data in the HTTP response.
 
 // =================================================================================================
 // Configuring the server
@@ -150,7 +150,7 @@ include::finish/src/main/liberty/config/server.xml[]
 
 The configuration does the following actions:
 
-* Configures the server to enable restfulWS. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
+* Configures the server to enable RESTful Web Services. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
 * Configures the server to resolve the HTTP port numbers from variables, which are then specified in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
 * Configures the server to run the produced web application on a context root specified in the [hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
 
@@ -179,12 +179,12 @@ Check out the service that you created at the http://localhost:9080/LibertyProje
 
 // static guide instructions:
 ifndef::cloud-hosted[]
-You can test this service manually by starting a server and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the restfulWS Client API provide a simple environment to test the application.
+You can test this service manually by starting a server and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the RESTful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
 // cloud-hosted guide instructions:
 ifdef::cloud-hosted[]
-You can test this service manually by starting a server and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the restfulWS Client API provide a simple environment to test the application.
+You can test this service manually by starting a server and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the RESTful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
 You can write tests for the individual units of code outside of a running application server, or they can be written to call the application server directly. In this example, you will create a test that does the latter.
@@ -248,6 +248,6 @@ include::{common-includes}/devmode-quit.adoc[]
 
 == Great work! You're done!
 
-You just developed a RESTful service in Open Liberty by using restfulWS and JSON-B.
+You just developed a RESTful service in Open Liberty by using RESTful Web Services and JSON-B.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
