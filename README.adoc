@@ -77,7 +77,7 @@ endif::[]
 [role='command']
 include::{common-includes}/devmode-lmp33-start.adoc[]
 
-The Jakarta Restful Web Services has two key concepts for creating REST APIs. The most obvious one is the resource itself, which is modelled as a class. The second is a RESTful application, which groups all exposed resources under a common path. You can think of the RESTful application as a wrapper for all of your resources.
+Jakarta Restful Web Services defines two key concepts for creating REST APIs. The most obvious one is the resource itself, which is modelled as a class. The second is a RESTful application, which groups all exposed resources under a common path. You can think of the RESTful application as a wrapper for all of your resources.
 
 
 [role="code_command hotspot" ,subs="quotes"]
