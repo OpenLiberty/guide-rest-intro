@@ -122,11 +122,11 @@ include::finish/src/main/java/io/openliberty/guides/rest/SystemApplication.java[
 
 The [hotspot=path file=0]`@Path` annotation on the class indicates that this resource responds to the `properties` path in the RESTful Web Services application. The [hotspot=applicationPath file=1]`@ApplicationPath` annotation in the [hotspot=systemApplication file=1]`SystemApplication` class together with the [hotspot=path file=0]`@Path` annotation in this class indicates that the resource is available at the `system/properties` path.
 
-RestfulWS maps the HTTP methods on the URL to the methods of the class by using annotations. Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request to the `system/properties` path.
+Jakarta Restful Web Services maps the HTTP methods on the URL to the methods of the class by using annotations. Your application uses the [hotspot=get]`GET` annotation to map an HTTP `GET` request to the `system/properties` path.
 
 The [hotspot=get file=0]`@GET` annotation on the method indicates that this method is to be called for the HTTP `GET` method. The [hotspot=produces file=0]`@Produces` annotation indicates the format of the content that will be returned. The value of the [hotspot=produces file=0]`@Produces` annotation will be specified in the HTTP `Content-Type` response header. For this application, a JSON structure is to be returned. The desired `Content-Type` for a JSON response is `application/json` with `MediaType.APPLICATION_JSON` instead of the `String` content type. Using a constant such as `MediaType.APPLICATION_JSON` is better because if there's a spelling error, a compile failure occurs.
 
-RestfulWS supports a number of ways to marshal JSON. The Jakarta Restful Web Services specification mandates JSON-Binding (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method is annotated with `@Produces(MediaType.APPLICATION_JSON)` so Jakarta Restful Web Services uses JSON-B to automatically convert the returned object to JSON data in the HTTP response.
+Jakarta Restful Web Services supports a number of ways to marshal JSON. The Jakarta Restful Web Services specification mandates JSON-Binding (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method is annotated with `@Produces(MediaType.APPLICATION_JSON)` so Jakarta Restful Web Services uses JSON-B to automatically convert the returned object to JSON data in the HTTP response.
 
 // =================================================================================================
 // Configuring the server
