@@ -47,7 +47,7 @@ The service responds to a `GET` request with a JSON representation of the system
 }
 ----
 
-The design of an HTTP API is essential when creating a web application. The REST API has become the go-to architectural style for building an HTTP API. The Jakarta Restful Web Services API offers functionality for creating, reading, updating, and deleting exposed resources. The Jakarta Restful Web Services API supports the creation of RESTful web services that come with desirable properties, such as performance, scalability, and modifiability.
+The design of an HTTP API is an essential part of creating a web application. The REST API is the go-to architectural style for building an HTTP API. The Jakarta Restful Web Services API offers functions to create, read, update, and delete exposed resources. The Jakarta Restful Web Services API supports the creation of RESTful web services that are performant, scalable, and modifiable.
 
 [role="command"]
 include::{common-includes}/gitclone.adoc[]
