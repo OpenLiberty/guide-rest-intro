@@ -37,7 +37,7 @@ Learn how to create a RESTful service with Jakarta Restful Web Services, JSON-B,
 
 You will learn how to build and test a simple RESTful service with Jakarta Restful Web Services and JSON-B, which will expose the JVM's system properties. The RESTful service responds to `GET` requests made to the `\http://localhost:9080/LibertyProject/system/properties` URL.
 
-The service responds to a `GET` request with a JSON representation of the system properties, where each property is a field in a JSON object like this:
+The service responds to a `GET` request with a JSON representation of the system properties, where each property is a field in a JSON object, like this:
 
 [source,json,role="no_copy"]
 ----
