@@ -100,7 +100,7 @@ The [hotspot=systemApplication]`SystemApplication` class extends the `Applicatio
 
 == Creating the RESTful resource
 
-In a RESTful application, a single class represents a single resource, or a group of resources of the same type. In this application, a resource might be a system property, or a set of system properties.A single class can easily handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
+In a RESTful application, a single class represents a single resource, or a group of resources of the same type. In this application, a resource might be a system property, or a set of system properties. A single class can easily handle multiple different resources, but keeping a clean separation between types of resources helps with maintainability in the long run.
 
 [role="code_command hotspot", subs="quotes"]
 ----
