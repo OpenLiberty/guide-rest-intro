@@ -12,7 +12,7 @@ A good bug report makes it easy for everyone to understand what you were trying 
 
 ## Contributions 
 
-Contributing to an Open Liberty guide is simple. All you need to do is create your own branch to include your contribution and open a pull request to the `qa` (quality assurance) branch.
+Contributing to an Open Liberty guide is simple. All you need to do is create your own branch to include your contribution and open a pull request to the `staging` (quality assurance) branch.
 
 ### Text or content contributions
 
@@ -43,9 +43,9 @@ If you are contributing changes as part of your job, you may also wish to have y
 
 Instructions for how to sign and submit these agreements are located at the top of each document. 
 
-After we obtain the signed CLA, you are welcome to open a pull request against the `qa` branch, and the team will be notified for review. We ask you follow these steps through the submission process:
+After we obtain the signed CLA, you are welcome to open a pull request against the `staging` branch, and the team will be notified for review. We ask you follow these steps through the submission process:
 
-1. Open a pull request against the `qa` branch.
+1. Open a pull request against the `staging` branch.
 2. A "CLA signed" label will be manually added by the team.
 3. The team will be notified and will review your change(s). 
     - If there are further changes to be made, the team will request changes on the pull request. 
