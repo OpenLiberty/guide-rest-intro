@@ -184,7 +184,7 @@ endif::[]
 
 // cloud-hosted guide instructions:
 ifdef::cloud-hosted[]
-You can test this service manually by starting a Liberty runtime and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
+You can test this service manually by starting a Liberty runtime instance and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
 You can write tests for the individual units of code outside of a running Liberty instance, or they can be written to call the Liberty instance directly. In this example, you will create a test that does the latter.
