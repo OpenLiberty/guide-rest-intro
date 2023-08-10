@@ -1,4 +1,4 @@
-//  Copyright (c) 2017, 2022 IBM Corporation and others.
+//  Copyright (c) 2017, 2023 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -8,7 +8,7 @@
 //
 :projectid: rest-intro
 :page-layout: guide-multipane
-:page-duration: 30 minutes
+:page-duration: 30 minute
 :page-releasedate: 2017-09-19
 :page-guide-category: microprofile
 :page-essential: true
@@ -129,16 +129,16 @@ The [hotspot=get file=0]`@GET` annotation on the method indicates that this meth
 Jakarta Restful Web Services supports a number of ways to marshal JSON. The Jakarta Restful Web Services specification mandates JSON-Binding (JSON-B). The method body returns the result of `System.getProperties()`, which is of type `java.util.Properties`. The method is annotated with `@Produces(MediaType.APPLICATION_JSON)` so Jakarta Restful Web Services uses JSON-B to automatically convert the returned object to JSON data in the HTTP response.
 
 // =================================================================================================
-// Configuring the server
+// Configuring the runtime
 // =================================================================================================
 
-== Configuring the server
+== Configuring the runtime
 
-To get the service running, the Liberty instance needs to be correctly configured.
+To get the service running, the Liberty runtime needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Replace the server configuration file.#
+#Replace the runtime configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
@@ -150,9 +150,9 @@ include::finish/src/main/liberty/config/server.xml[]
 
 The configuration does the following actions:
 
-* Configures the server to enable Jakarta Restful Web Services. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
-* Configures the server to resolve the HTTP port numbers from variables, which are then specified in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
-* Configures the server to run the produced web application on a context root specified in the [hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
+* Configures the runtime to enable Jakarta Restful Web Services. This is specified in the [hotspot=featureManager file=0]`featureManager` element.
+* Configures the runtime to resolve the HTTP port numbers from variables, which are then specified in the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort file=1]`pom.xml` file. This is specified in the [hotspot=httpEndpoint file=0]`httpEndpoint` element. Variables use the `${variableName}` syntax.
+* Configures the runtime to run the produced web application on a context root specified in the [hotspot=appContextRoot file=1]`pom.xml` file. This is specified in the [hotspot=webApplication file=0]`webApplication` element.
 
 pom.xml
 [source,xml,linenums,role="code_column"]
@@ -179,15 +179,15 @@ Check out the service that you created at the http://localhost:9080/LibertyProje
 
 // static guide instructions:
 ifndef::cloud-hosted[]
-You can test this service manually by starting a server and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
+You can test this service manually by starting a Liberty runtime and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
 // cloud-hosted guide instructions:
 ifdef::cloud-hosted[]
-You can test this service manually by starting a server and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
+You can test this service manually by starting a Liberty runtime and visiting the http://localhost:9080/LibertyProject/system/properties URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
-You can write tests for the individual units of code outside of a running application server, or they can be written to call the application server directly. In this example, you will create a test that does the latter.
+You can write tests for the individual units of code outside of a running Liberty instance, or they can be written to call the Liberty instance directly. In this example, you will create a test that does the latter.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -209,7 +209,7 @@ pom.xml
 include::finish/pom.xml[]
 ----
 
-The test code needs to know some information about the application to make requests. The server port and the application context root are key, and are dictated by the server configuration. While this information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=defaultHttpPort file=1]`default.http.port`, [hotspot=defaultHttpsPort file=1]`default.https.port` and [hotspot=appContextRoot file=1]`app.context.root` elements are provided in the file.
+The test code needs to know some information about the application to make requests. The server port and the application context root are key, and are dictated by the runtime configuration. While this information can be hardcoded, it is better to specify it in a single place like the Maven [hotspot=defaultHttpPort hotspot=defaultHttpsPort hotspot=appContextRoot file=1]`pom.xml` file. Refer to the [hotspot file=1]`pom.xml` file to see how the application information such as the [hotspot=defaultHttpPort file=1]`default.http.port`, [hotspot=defaultHttpsPort file=1]`default.https.port` and [hotspot=appContextRoot file=1]`app.context.root` elements are provided in the file.
 
 
 These Maven properties are then passed to the Java test program as the [hotspot=testsysprops file=1]`systemPropertyVariables` element in the [hotspot file=1]`pom.xml` file.
