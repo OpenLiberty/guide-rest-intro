@@ -134,7 +134,7 @@ Jakarta Restful Web Services supports a number of ways to marshal JSON. The Jaka
 
 == Configuring the server
 
-To get the service running, the Liberty server needs to be correctly configured.
+To get the service running, the Liberty instance needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
