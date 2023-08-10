@@ -179,7 +179,7 @@ Check out the service that you created at the http://localhost:9080/LibertyProje
 
 // static guide instructions:
 ifndef::cloud-hosted[]
-You can test this service manually by starting a Liberty runtime and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
+You can test this service manually by starting a Liberty runtime instance and pointing a web browser at the http://localhost:9080/LibertyProject/system/properties[^] URL. However, automated tests are a much better approach because they trigger a failure if a change introduces a bug. JUnit and the Jakarta Restful Web Services Client API provide a simple environment to test the application.
 endif::[]
 
 // cloud-hosted guide instructions:
