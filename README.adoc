@@ -134,11 +134,11 @@ Jakarta Restful Web Services supports a number of ways to marshal JSON. The Jaka
 
 == Configuring Liberty
 
-To get the service running, the Liberty's `server.xml` configuration file needs to be correctly configured.
+To get the service running, the Liberty `server.xml` configuration file needs to be correctly configured.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Replace the server.xml configuration file.#
+#Replace the Liberty `server.xml` configuration file.#
 `src/main/liberty/config/server.xml`
 ----
 
