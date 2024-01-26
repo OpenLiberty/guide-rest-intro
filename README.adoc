@@ -15,7 +15,7 @@
 :page-essential-order: 1
 :page-description: Learn how to create a RESTful service with Jakarta Restful Web Services, JSON-B, and Open Liberty.
 :guide-author: Open Liberty
-:page-tags: ['MicroProfile', 'Jakarta EE']
+:page-tags: ['microprofile', 'jakarta-ee']
 :page-related-guides: ['rest-client-java', 'rest-client-angularjs']
 :page-permalink: /guides/{projectid}
 :page-seo-title: Building a simple RESTful Java microservice using Jakarta Restful Web Services, formerly known as JAX-RS, and JSON-B
