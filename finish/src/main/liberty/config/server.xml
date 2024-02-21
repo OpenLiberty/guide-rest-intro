@@ -7,7 +7,7 @@
   <!-- end::featureManager[] -->
 
   <!-- tag::httpEndpoint[] -->
-  <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+  <httpEndpoint httpPort="${http.port}" httpsPort="${https.port}"
                 id="defaultHttpEndpoint" host="*" />
   <!-- end::httpEndpoint[] -->
   
