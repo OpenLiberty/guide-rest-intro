@@ -1,4 +1,4 @@
-//  Copyright (c) 2017, 2024 IBM Corporation and others.
+//  Copyright (c) 2017, 2025 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -53,12 +53,12 @@ The design of an HTTP API is an essential part of creating a web application. Th
 include::{common-includes}/gitclone.adoc[]
 
 [role='command']
-include::{common-includes}/twyb-intro.adoc[]
+include::{common-includes}/twyb-intro-mvnw.adoc[]
 
 Check out the service at the http://localhost:9080/LibertyProject/system/properties[^] URL. 
 
 [role='command']
-include::{common-includes}/twyb-end.adoc[]
+include::{common-includes}/twyb-end-mvnw.adoc[]
 
 // =================================================================================================
 // Creating a RESTful application
@@ -75,7 +75,7 @@ cd /home/project/guide-rest-intro/start
 endif::[]
 
 [role='command']
-include::{common-includes}/devmode-lmp33-start.adoc[]
+include::{common-includes}/devmode-mvnw-start.adoc[]
 
 Jakarta Restful Web Services defines two key concepts for creating REST APIs. The most obvious one is the resource itself, which is modelled as a class. The second is a RESTful application, which groups all exposed resources under a common path. You can think of the RESTful application as a wrapper for all of your resources.
 
