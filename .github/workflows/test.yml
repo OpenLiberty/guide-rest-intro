@@ -28,6 +28,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: ./tools/pr-checker/linters/
+          FILTER_REGEX_EXCLUDE: mvnw*
           DEFAULT_BRANCH: prod
       - name: Summary
         if: "! github.event.pull_request.head.repo.fork"
@@ -52,7 +53,7 @@ jobs:
           java-version: 11
       - run: unset _JAVA_OPTIONS
       - name: Run tests
-        run: sudo ../scripts/testApp.sh
+        run: sudo -E ../scripts/testApp.sh
       - name: Post tests
         if: always()
         run: |
